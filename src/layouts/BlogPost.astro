@@ -10,7 +10,7 @@ import '../styles/global.css';
 type Props = CollectionEntry<'blog'>['data'];
 
 const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
-const currentFile = title.toLowerCase().replace(/\s+/g, '_') + '.txt';
+const currentFile = title.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '') + '.txt';
 ---
 
 <html lang="en">
@@ -41,7 +41,7 @@ const currentFile = title.toLowerCase().replace(/\s+/g, '_') + '.txt';
 						<span class="w-3 h-3 bg-yellow-500 rounded-full"></span>
 						<span class="w-3 h-3 bg-green-500 rounded-full"></span>
 					</div>
-					<span class="absolute left-1/2 transform -translate-x-1/2 text-sm text-[#4D4D4D] dark:text-[#F8F8F2] font-medium">{title.toLowerCase().replace(/\s+/g, '_')}.txt</span>
+					<span class="absolute left-1/2 transform -translate-x-1/2 text-sm text-[#4D4D4D] dark:text-[#F8F8F2] font-medium">{title.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '')}.txt</span>
 				</div>
 
 				<!-- Text file content -->

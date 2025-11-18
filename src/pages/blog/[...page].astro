@@ -1,4 +1,6 @@
 ---
+import type { GetStaticPaths, Page } from 'astro';
+import type { CollectionEntry } from 'astro:content';
 import { getCollection } from 'astro:content';
 import BaseHead from '../../components/BaseHead.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
@@ -7,9 +9,18 @@ import FormattedDate from '../../components/FormattedDate.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
 import "../../styles/global.css";
 
-const posts = (await getCollection('blog')).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+export const getStaticPaths = (async ({ paginate }) => {
+	const posts = (await getCollection('blog')).sort(
+		(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+	);
+	return paginate(posts, { pageSize: 10 });
+}) satisfies GetStaticPaths;
+
+type Props = {
+	page: Page<CollectionEntry<'blog'>>;
+};
+
+const { page } = Astro.props;
 ---
 
 <!doctype html>
@@ -48,13 +59,14 @@ const posts = (await getCollection('blog')).sort(
 					<div class="flex flex-col gap-2">
 						<p class="text-sm sm:text-base">
 							<span class="text-[#D97706] dark:text-[#F1FA8C]">$</span> <span class="text-[#BE185D] dark:text-[#FF79C6]">ls</span> <span class="text-[#0369A1] dark:text-[#8BE9FD]">-lt</span> blog/
+							{page.currentPage > 1 && <span class="text-[#4D4D4D] dark:text-[#6272A4]"> --page={page.currentPage}</span>}
 						</p>
 						<p class="text-sm sm:text-base pt-2 pl-4">
 							Latest blog posts (sorted by date):
 						</p>
 						<div class="pl-4 pt-2 space-y-3">
 							{
-								posts.map((post) => (
+								page.data.map((post) => (
 									<div class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-3">
 										<a
 											href={`/blog/${post.id}/`}
@@ -69,6 +81,44 @@ const posts = (await getCollection('blog')).sort(
 								))
 							}
 						</div>
+
+						<!-- Pagination Controls -->
+						{(page.lastPage > 1) && (
+							<div class="pt-6 border-t border-[#D0D0D0] dark:border-[#44475A] mt-4">
+								<div class="flex items-center justify-between text-sm sm:text-base">
+									<div class="flex items-center gap-2">
+										{page.url.prev ? (
+											<a
+												href={page.url.prev}
+												class="text-[#0369A1] dark:text-[#8BE9FD] hover:text-[#0284C7] dark:hover:text-[#FF79C6] transition-colors font-medium"
+											>
+												← Previous
+											</a>
+										) : (
+											<span class="text-[#9CA3AF] dark:text-[#6272A4]">← Previous</span>
+										)}
+									</div>
+
+									<div class="flex items-center gap-2 text-[#4D4D4D] dark:text-[#6272A4]">
+										<span>Page {page.currentPage} of {page.lastPage}</span>
+									</div>
+
+									<div class="flex items-center gap-2">
+										{page.url.next ? (
+											<a
+												href={page.url.next}
+												class="text-[#0369A1] dark:text-[#8BE9FD] hover:text-[#0284C7] dark:hover:text-[#FF79C6] transition-colors font-medium"
+											>
+												Next →
+											</a>
+										) : (
+											<span class="text-[#9CA3AF] dark:text-[#6272A4]">Next →</span>
+										)}
+									</div>
+								</div>
+							</div>
+						)}
+
 						<p class="text-sm sm:text-base pt-4">
 							<span class="text-[#D97706] dark:text-[#F1FA8C] mr-1">$</span> <span class="animate-pulse border-r-2 border-[#15803D] dark:border-[#50FA7B] pr-1"></span>
 						</p>

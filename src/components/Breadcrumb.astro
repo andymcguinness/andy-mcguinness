@@ -34,7 +34,7 @@ const posts = (await getCollection('blog')).sort(
 				id="breadcrumb-menu"
 				class="hidden absolute top-full left-0 mt-2 bg-[#F8F8F2] dark:bg-[#282A36] border-2 border-[#D0D0D0] dark:border-[#44475A] rounded-lg shadow-2xl min-w-[280px] z-50 overflow-hidden"
 			>
-				<div class="p-4 space-y-2 font-mono text-sm">
+				<div class="p-4 font-mono text-sm">
 					<!-- Home -->
 					<div>
 						<a
@@ -44,62 +44,36 @@ const posts = (await getCollection('blog')).sort(
 							<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
 							</svg>
-							<span>~/</span>
+							<span>~</span>
 						</a>
 					</div>
 
-					<!-- About -->
-					<div>
-						<a
-							href="/about"
-							class="flex items-center gap-2 text-[#0369A1] dark:text-[#8BE9FD] hover:text-[#0284C7] dark:hover:text-[#FF79C6] transition-colors py-1 px-2 rounded hover:bg-[#E5E5E5] dark:hover:bg-[#21222C]"
-						>
-							<svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
-								<path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd"></path>
-							</svg>
-							<span>about_andy.txt</span>
-						</a>
-					</div>
-
-					<!-- Blog (collapsible) -->
-					<div>
-						<button
-							id="blog-folder-toggle"
-							class="flex items-center gap-2 text-[#0369A1] dark:text-[#8BE9FD] hover:text-[#0284C7] dark:hover:text-[#FF79C6] transition-colors py-1 px-2 rounded hover:bg-[#E5E5E5] dark:hover:bg-[#21222C] w-full text-left focus:outline-none focus:ring-2 focus:ring-[#0369A1] dark:focus:ring-[#8BE9FD]"
-							aria-expanded="false"
-						>
-							<svg id="blog-chevron" class="w-3 h-3 transition-transform" fill="currentColor" viewBox="0 0 20 20">
-								<path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
-							</svg>
-							<svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
-								<path d="M2 6a2 2 0 012-2h5l2 2h5a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"></path>
-							</svg>
-							<span>blog/</span>
-						</button>
-
-						<!-- Blog submenu -->
-						<div id="blog-submenu" class="hidden ml-6 mt-1 space-y-1 max-h-64 overflow-y-auto">
+					<!-- Nested items under Home -->
+					<div class="ml-6 mt-1 space-y-1 border-l-2 border-[#D0D0D0] dark:border-[#44475A] pl-2">
+						<!-- About -->
+						<div>
 							<a
-								href="/blog"
-								class="flex items-center gap-2 text-[#6D6D6D] dark:text-[#A0A0A0] hover:text-[#0369A1] dark:hover:text-[#8BE9FD] transition-colors py-1 px-2 rounded hover:bg-[#E5E5E5] dark:hover:bg-[#21222C] text-xs"
+								href="/about"
+								class="flex items-center gap-2 text-[#0369A1] dark:text-[#8BE9FD] hover:text-[#0284C7] dark:hover:text-[#FF79C6] transition-colors py-1 px-2 rounded hover:bg-[#E5E5E5] dark:hover:bg-[#21222C]"
 							>
-								<svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+								<svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
 									<path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd"></path>
 								</svg>
-								<span>index</span>
+								<span>about_andy.txt</span>
 							</a>
-							{posts.map((post) => (
-								<a
-									href={`/blog/${post.id}/`}
-									class="flex items-center gap-2 text-[#6D6D6D] dark:text-[#A0A0A0] hover:text-[#0369A1] dark:hover:text-[#8BE9FD] transition-colors py-1 px-2 rounded hover:bg-[#E5E5E5] dark:hover:bg-[#21222C] text-xs"
-									title={post.data.title}
-								>
-									<svg class="w-3 h-3 shrink-0" fill="currentColor" viewBox="0 0 20 20">
-										<path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd"></path>
-									</svg>
-									<span class="truncate">{post.data.title.toLowerCase().replace(/\s+/g, '_')}.txt</span>
-								</a>
-							))}
+						</div>
+
+						<!-- Blog -->
+						<div>
+							<a
+								href="/blog"
+								class="flex items-center gap-2 text-[#0369A1] dark:text-[#8BE9FD] hover:text-[#0284C7] dark:hover:text-[#FF79C6] transition-colors py-1 px-2 rounded hover:bg-[#E5E5E5] dark:hover:bg-[#21222C]"
+							>
+								<svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+									<path d="M2 6a2 2 0 012-2h5l2 2h5a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"></path>
+								</svg>
+								<span>blog</span>
+							</a>
 						</div>
 					</div>
 				</div>
@@ -113,7 +87,7 @@ const posts = (await getCollection('blog')).sort(
 						<svg class="w-3.5 h-3.5 mr-1" fill="currentColor" viewBox="0 0 20 20">
 							<path d="M2 6a2 2 0 012-2h5l2 2h5a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"></path>
 						</svg>
-						blog/
+						blog
 					</li>
 				) : currentPath === '/about' ? (
 					<li class="flex items-center text-[#2D2D2D] dark:text-[#F8F8F2] font-medium">
