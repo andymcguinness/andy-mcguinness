@@ -1,63 +1,76 @@
 ---
-import AboutHeroImage from '../assets/blog-placeholder-about.jpg';
-import Layout from '../layouts/BlogPost.astro';
+import BaseHead from "../components/BaseHead.astro";
+import Breadcrumb from "../components/Breadcrumb.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/global.css";
 ---
 
-<Layout
-	title="About Me"
-	description="Lorem ipsum dolor sit amet"
-	pubDate={new Date('August 08 2021')}
-	heroImage={AboutHeroImage}
->
-	<p>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-		labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo
-		viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam
-		adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus
-		et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus
-		vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque
-		sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
-	</p>
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title="About | Andy McGuinness" description="About Andy McGuinness" />
+		<script is:inline>
+			// Prevent flash of wrong theme
+			(function() {
+				const getTheme = () => {
+					const stored = localStorage.getItem('theme');
+					if (stored === 'light' || stored === 'dark') return stored;
+					return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+				};
+				document.documentElement.classList.add(getTheme());
+			})();
+		</script>
+	</head>
+	<body class="flex flex-col w-full min-h-screen justify-between bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors">
+		<main class="flex flex-col w-full items-center flex-1 pt-16 sm:pt-20 px-4">
+			<Breadcrumb currentPath="/about" />
 
-	<p>
-		Morbi tristique senectus et netus. Id semper risus in hendrerit gravida rutrum quisque non
-		tellus. Habitasse platea dictumst quisque sagittis purus sit amet. Tellus molestie nunc non
-		blandit massa. Cursus vitae congue mauris rhoncus. Accumsan tortor posuere ac ut. Fringilla urna
-		porttitor rhoncus dolor. Elit ullamcorper dignissim cras tincidunt lobortis. In cursus turpis
-		massa tincidunt dui ut ornare lectus. Integer feugiat scelerisque varius morbi enim nunc.
-		Bibendum neque egestas congue quisque egestas diam. Cras ornare arcu dui vivamus arcu felis
-		bibendum. Dignissim suspendisse in est ante in nibh mauris. Sed tempus urna et pharetra pharetra
-		massa massa ultricies mi.
-	</p>
+			<div class="flex flex-col w-full max-w-4xl bg-[#F8F8F2] dark:bg-[#282A36] rounded-lg shadow-2xl relative overflow-hidden border border-[#E5E5E5] dark:border-[#44475A]">
+				<!-- TextEdit title bar -->
+				<div class="w-full bg-[#E5E5E5] dark:bg-[#21222C] h-10 rounded-t-lg flex items-center px-3 relative border-b border-[#D0D0D0] dark:border-[#44475A]">
+					<div class="flex items-center gap-2">
+						<span class="w-3 h-3 bg-red-500 rounded-full"></span>
+						<span class="w-3 h-3 bg-yellow-500 rounded-full"></span>
+						<span class="w-3 h-3 bg-green-500 rounded-full"></span>
+					</div>
+					<span class="absolute left-1/2 transform -translate-x-1/2 text-sm text-[#4D4D4D] dark:text-[#F8F8F2] font-medium">about_andy.txt</span>
+				</div>
 
-	<p>
-		Mollis nunc sed id semper risus in. Convallis a cras semper auctor neque. Diam sit amet nisl
-		suscipit. Lacus viverra vitae congue eu consequat ac felis donec. Egestas integer eget aliquet
-		nibh praesent tristique magna sit amet. Eget magna fermentum iaculis eu non diam. In vitae
-		turpis massa sed elementum. Tristique et egestas quis ipsum suspendisse ultrices. Eget lorem
-		dolor sed viverra ipsum. Vel turpis nunc eget lorem dolor sed viverra. Posuere ac ut consequat
-		semper viverra nam. Laoreet suspendisse interdum consectetur libero id faucibus. Diam phasellus
-		vestibulum lorem sed risus ultricies tristique. Rhoncus dolor purus non enim praesent elementum
-		facilisis. Ultrices tincidunt arcu non sodales neque. Tempus egestas sed sed risus pretium quam
-		vulputate. Viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare. Fringilla
-		urna porttitor rhoncus dolor purus non. Amet dictum sit amet justo donec enim.
-	</p>
+				<!-- Text file content -->
+				<div class="p-6 sm:p-8 md:p-12 bg-[#F8F8F2] dark:bg-[#282A36] text-[#4D4D4D] dark:text-[#F8F8F2] leading-relaxed">
+					<h1 class="text-3xl sm:text-4xl font-bold mb-6 text-[#2D2D2D] dark:text-[#F8F8F2]">About Me</h1>
 
-	<p>
-		Mattis ullamcorper velit sed ullamcorper morbi tincidunt. Tortor posuere ac ut consequat semper
-		viverra. Tellus mauris a diam maecenas sed enim ut sem viverra. Venenatis urna cursus eget nunc
-		scelerisque viverra mauris in. Arcu ac tortor dignissim convallis aenean et tortor at. Curabitur
-		gravida arcu ac tortor dignissim convallis aenean et tortor. Egestas tellus rutrum tellus
-		pellentesque eu. Fusce ut placerat orci nulla pellentesque dignissim enim sit amet. Ut enim
-		blandit volutpat maecenas volutpat blandit aliquam etiam. Id donec ultrices tincidunt arcu. Id
-		cursus metus aliquam eleifend mi.
-	</p>
+					<p class="mb-4 text-base sm:text-lg">
+						Hiya! I'm <strong class="font-bold text-[#2D2D2D] dark:text-[#F8F8F2]">Andy</strong>, a developer who's been building things with <span class="font-semibold text-purple-600 dark:text-purple-400">JavaScript</span> since 2014. These days, I run my own company, <a href="https://codebyandy.com/" class="font-bold text-[#0369A1] dark:text-[#8BE9FD] hover:text-[#0284C7] dark:hover:text-[#FF79C6] transition-colors">→ Code by Andy, LLC</a>, where I specialize in web applications (primarily <span class="font-semibold text-purple-600 dark:text-purple-400">Next.js</span>, but I'm also branching into <span class="font-semibold text-purple-600 dark:text-purple-400">Java</span> and <span class="font-semibold text-purple-600 dark:text-purple-400">Python</span>), <span class="font-semibold text-purple-600 dark:text-purple-400">AI integrations</span>, and <span class="font-semibold text-purple-600 dark:text-purple-400">data pipelines</span>. I'm passionate about building cool things with new tech! I'm currently playing around with <span class="font-semibold text-purple-600 dark:text-purple-400">Astro</span>, <span class="font-semibold text-purple-600 dark:text-purple-400">Sanity CMS</span>, and various <span class="font-semibold text-purple-600 dark:text-purple-400">AI tools</span>.
+					</p>
 
-	<p>
-		Tempus quam pellentesque nec nam aliquam sem. Risus at ultrices mi tempus imperdiet. Id porta
-		nibh venenatis cras sed felis eget velit. Ipsum a arcu cursus vitae. Facilisis magna etiam
-		tempor orci eu lobortis elementum. Tincidunt dui ut ornare lectus sit. Quisque non tellus orci
-		ac. Blandit libero volutpat sed cras. Nec tincidunt praesent semper feugiat nibh sed pulvinar
-		proin gravida. Egestas integer eget aliquet nibh praesent tristique magna.
-	</p>
-</Layout>
+					<p class="mb-4 text-base sm:text-lg">
+						I'm a proud <span class="font-semibold text-[#782F40] dark:text-[#CEB888]">Florida State</span> grad (go Noles!) and am currently pursuing a second degree in <strong class="font-bold">Data Science</strong> at <span class="font-semibold text-[#8C1D40] dark:text-[#FFC627]">Arizona State</span> (forks up!). My first degree was in <strong class="font-bold">IT</strong>, but I fell in love with <strong class="font-bold">data</strong> along the way: cleaning it, massaging it, understanding it, and telling stories with it. There's something deeply satisfying about turning messy data into meaningful insights.
+					</p>
+
+					<p class="mb-4 text-base sm:text-lg">
+						When I'm not coding, you'll find me deep in a <strong class="font-bold text-red-600 dark:text-red-400">Dungeons & Dragons</strong> campaign (I both DM and play; currently running a Warforged Barbarian, though I usually gravitate toward ranged spellcasters), raiding in <strong class="font-bold text-blue-500 dark:text-blue-300">World of Warcraft</strong> (For the Alliance! Though I did main Horde for many years), or watching sports. I also enjoy going to concerts and spending quality time with my partner and our <strong class="font-bold">six cats</strong>, who have a knack for walking across my keyboard during important video calls.
+					</p>
+
+					<p class="mb-4 text-base sm:text-lg">
+						I've lived in <strong class="font-bold">7 states</strong> so far and will probably live in many more! I'm currently based between <span class="font-semibold">Toledo, Ohio</span> and the <span class="font-semibold">San Francisco Bay Area</span>. If you want to chat about a project, swap data stories, or just talk tech (or D&D), feel free to reach out!
+					</p>
+
+					<div class="mt-8 pt-6 border-t border-[#D0D0D0] dark:border-[#44475A]">
+						<h2 class="text-xl sm:text-2xl font-bold mb-4 text-[#2D2D2D] dark:text-[#F8F8F2]">Let's Connect</h2>
+						<p class="mb-3 text-base sm:text-lg">
+							Want to work together or just say hi? You can find me at:
+						</p>
+						<ul class="list-disc list-inside space-y-2 text-base sm:text-lg ml-4">
+							<li>GitHub: <a href="https://github.com/andymcguinness" target="_blank" rel="noopener noreferrer" class="font-bold text-[#0369A1] dark:text-[#8BE9FD] hover:text-[#0284C7] dark:hover:text-[#FF79C6] transition-colors">→ @andymcguinness</a></li>
+							<li>LinkedIn: <a href="https://linkedin.com/in/mcguinnessandy" target="_blank" rel="noopener noreferrer" class="font-bold text-[#0369A1] dark:text-[#8BE9FD] hover:text-[#0284C7] dark:hover:text-[#FF79C6] transition-colors">→ @mcguinnessandy</a></li>
+							<li>Instagram (Personal): <a href="https://instagram.com/andymcgnnss" target="_blank" rel="noopener noreferrer" class="font-bold text-[#0369A1] dark:text-[#8BE9FD] hover:text-[#0284C7] dark:hover:text-[#FF79C6] transition-colors">→ @andymcgnnss</a></li>
+							<li>Instagram (Business): <a href="https://instagram.com/codebyandy" target="_blank" rel="noopener noreferrer" class="font-bold text-[#0369A1] dark:text-[#8BE9FD] hover:text-[#0284C7] dark:hover:text-[#FF79C6] transition-colors">→ @codebyandy</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>
