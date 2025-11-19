@@ -1,0 +1,202 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Breadcrumb from "../components/Breadcrumb.astro";
+import Footer from "../components/Footer.astro";
+import Analytics from '@vercel/analytics/astro'
+import "../styles/global.css";
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title="Contact | Andy McGuinness" description="Get in touch with Andy McGuinness" />
+		<script is:inline>
+			// Prevent flash of wrong theme
+			(function() {
+				const getTheme = () => {
+					const stored = localStorage.getItem('theme');
+					if (stored === 'light' || stored === 'dark') return stored;
+					return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+				};
+				document.documentElement.classList.add(getTheme());
+			})();
+		</script>
+	</head>
+	<body class="flex flex-col w-full min-h-screen justify-between bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors">
+		<main class="flex flex-col w-full items-center flex-1 pt-16 sm:pt-20 px-4">
+			<Breadcrumb currentPath="/contact" />
+
+			<div class="flex flex-col w-full max-w-4xl bg-[#F8F8F2] dark:bg-[#282A36] rounded-lg shadow-2xl relative overflow-hidden border border-[#E5E5E5] dark:border-[#44475A]">
+				<!-- Terminal title bar -->
+				<div class="w-full bg-[#E5E5E5] dark:bg-[#21222C] h-10 rounded-t-lg flex items-center px-3 relative border-b border-[#D0D0D0] dark:border-[#44475A]">
+					<div class="flex items-center gap-2">
+						<span class="w-3 h-3 bg-red-500 rounded-full"></span>
+						<span class="w-3 h-3 bg-yellow-500 rounded-full"></span>
+						<span class="w-3 h-3 bg-green-500 rounded-full"></span>
+					</div>
+					<span class="absolute left-1/2 transform -translate-x-1/2 text-sm text-[#4D4D4D] dark:text-[#F8F8F2] font-medium">contact_form.sh</span>
+				</div>
+
+				<!-- Form content -->
+				<div class="p-6 sm:p-8 md:p-12 bg-[#F8F8F2] dark:bg-[#282A36]">
+					<h1 class="text-3xl sm:text-4xl font-bold mb-6 text-[#2D2D2D] dark:text-[#F8F8F2]">Get in Touch</h1>
+
+					<p class="mb-6 text-base sm:text-lg text-[#4D4D4D] dark:text-[#F8F8F2]">
+						Have a project in mind or just want to chat? Fill out the form below and I'll get back to you as soon as possible!
+					</p>
+
+					<form
+						id="contact-form"
+						action="https://formspree.io/f/nxnrqzwx"
+						method="POST"
+						class="space-y-6"
+					>
+						<!-- Name field -->
+						<div>
+							<label for="name" class="block text-sm font-semibold mb-2 text-[#2D2D2D] dark:text-[#F8F8F2]">
+								Name <span class="text-red-600 dark:text-red-400">*</span>
+							</label>
+							<input
+								type="text"
+								id="name"
+								name="name"
+								required
+								class="w-full px-4 py-3 rounded-lg border-2 border-[#D0D0D0] dark:border-[#44475A] bg-white dark:bg-[#21222C] text-[#2D2D2D] dark:text-[#F8F8F2] focus:outline-none focus:border-[#0369A1] dark:focus:border-[#8BE9FD] transition-colors"
+								placeholder="Your name"
+							/>
+						</div>
+
+						<!-- Email field -->
+						<div>
+							<label for="email" class="block text-sm font-semibold mb-2 text-[#2D2D2D] dark:text-[#F8F8F2]">
+								Email <span class="text-red-600 dark:text-red-400">*</span>
+							</label>
+							<input
+								type="email"
+								id="email"
+								name="email"
+								required
+								class="w-full px-4 py-3 rounded-lg border-2 border-[#D0D0D0] dark:border-[#44475A] bg-white dark:bg-[#21222C] text-[#2D2D2D] dark:text-[#F8F8F2] focus:outline-none focus:border-[#0369A1] dark:focus:border-[#8BE9FD] transition-colors"
+								placeholder="your.email@example.com"
+							/>
+						</div>
+
+						<!-- Subject field -->
+						<div>
+							<label for="subject" class="block text-sm font-semibold mb-2 text-[#2D2D2D] dark:text-[#F8F8F2]">
+								Subject
+							</label>
+							<input
+								type="text"
+								id="subject"
+								name="subject"
+								class="w-full px-4 py-3 rounded-lg border-2 border-[#D0D0D0] dark:border-[#44475A] bg-white dark:bg-[#21222C] text-[#2D2D2D] dark:text-[#F8F8F2] focus:outline-none focus:border-[#0369A1] dark:focus:border-[#8BE9FD] transition-colors"
+								placeholder="What's this about?"
+							/>
+						</div>
+
+						<!-- Message field -->
+						<div>
+							<label for="message" class="block text-sm font-semibold mb-2 text-[#2D2D2D] dark:text-[#F8F8F2]">
+								Message <span class="text-red-600 dark:text-red-400">*</span>
+							</label>
+							<textarea
+								id="message"
+								name="message"
+								required
+								rows="6"
+								class="w-full px-4 py-3 rounded-lg border-2 border-[#D0D0D0] dark:border-[#44475A] bg-white dark:bg-[#21222C] text-[#2D2D2D] dark:text-[#F8F8F2] focus:outline-none focus:border-[#0369A1] dark:focus:border-[#8BE9FD] transition-colors resize-y"
+								placeholder="Your message here..."
+							></textarea>
+						</div>
+
+						<!-- FormSpree honeypot (spam protection) -->
+						<input type="text" name="_gotcha" style="display:none" />
+
+						<!-- Submit button -->
+						<div>
+							<button
+								type="submit"
+								id="submit-btn"
+								class="w-full sm:w-auto px-8 py-3 bg-[#0369A1] dark:bg-[#8BE9FD] text-white dark:text-[#282A36] font-bold rounded-lg hover:bg-[#0284C7] dark:hover:bg-[#FF79C6] focus:outline-none focus:ring-4 focus:ring-[#0369A1]/50 dark:focus:ring-[#8BE9FD]/50 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+							>
+								Send Message
+							</button>
+						</div>
+
+						<!-- Status messages -->
+						<div id="form-status" class="hidden mt-4 p-4 rounded-lg"></div>
+					</form>
+
+					<!-- Alternative contact methods -->
+					<div class="mt-10 pt-8 border-t border-[#D0D0D0] dark:border-[#44475A]">
+						<h2 class="text-xl sm:text-2xl font-bold mb-4 text-[#2D2D2D] dark:text-[#F8F8F2]">Other Ways to Connect</h2>
+						<p class="mb-3 text-base sm:text-lg text-[#4D4D4D] dark:text-[#F8F8F2]">
+							Prefer social media? Find me at:
+						</p>
+						<ul class="list-disc list-inside space-y-2 text-base sm:text-lg ml-4">
+							<li>GitHub: <a href="https://github.com/andymcguinness" target="_blank" rel="noopener noreferrer" class="font-bold text-[#0369A1] dark:text-[#8BE9FD] hover:text-[#0284C7] dark:hover:text-[#FF79C6] transition-colors">→ @andymcguinness</a></li>
+							<li>LinkedIn: <a href="https://linkedin.com/in/mcguinnessandy" target="_blank" rel="noopener noreferrer" class="font-bold text-[#0369A1] dark:text-[#8BE9FD] hover:text-[#0284C7] dark:hover:text-[#FF79C6] transition-colors">→ @mcguinnessandy</a></li>
+							<li>Instagram (Personal): <a href="https://instagram.com/andymcgnnss" target="_blank" rel="noopener noreferrer" class="font-bold text-[#0369A1] dark:text-[#8BE9FD] hover:text-[#0284C7] dark:hover:text-[#FF79C6] transition-colors">→ @andymcgnnss</a></li>
+							<li>Instagram (Business): <a href="https://instagram.com/codebyandy" target="_blank" rel="noopener noreferrer" class="font-bold text-[#0369A1] dark:text-[#8BE9FD] hover:text-[#0284C7] dark:hover:text-[#FF79C6] transition-colors">→ @codebyandy</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</main>
+		<Footer />
+		<Analytics />
+
+		<script>
+			// Client-side form handling
+			const form = document.getElementById('contact-form') as HTMLFormElement;
+			const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+			const formStatus = document.getElementById('form-status') as HTMLElement;
+
+			form.addEventListener('submit', async (e) => {
+				e.preventDefault();
+
+				// Disable submit button
+				submitBtn.disabled = true;
+				submitBtn.textContent = 'Sending...';
+
+				// Hide previous status messages
+				formStatus.classList.add('hidden');
+
+				try {
+					const formData = new FormData(form);
+					const response = await fetch(form.action, {
+						method: 'POST',
+						body: formData,
+						headers: {
+							'Accept': 'application/json'
+						}
+					});
+
+					if (response.ok) {
+						// Success
+						formStatus.classList.remove('hidden');
+						formStatus.classList.add('bg-green-100', 'dark:bg-green-900/30', 'text-green-800', 'dark:text-green-200', 'border', 'border-green-300', 'dark:border-green-700');
+						formStatus.classList.remove('bg-red-100', 'dark:bg-red-900/30', 'text-red-800', 'dark:text-red-200', 'border-red-300', 'dark:border-red-700');
+						formStatus.textContent = 'Thanks for reaching out! I\'ll get back to you soon.';
+						form.reset();
+					} else {
+						// Error
+						const data = await response.json();
+						throw new Error(data.error || 'Something went wrong');
+					}
+				} catch (error) {
+					// Error handling
+					formStatus.classList.remove('hidden');
+					formStatus.classList.add('bg-red-100', 'dark:bg-red-900/30', 'text-red-800', 'dark:text-red-200', 'border', 'border-red-300', 'dark:border-red-700');
+					formStatus.classList.remove('bg-green-100', 'dark:bg-green-900/30', 'text-green-800', 'dark:text-green-200', 'border-green-300', 'dark:border-green-700');
+					formStatus.textContent = error instanceof Error ? error.message : 'Oops! Something went wrong. Please try again.';
+				} finally {
+					// Re-enable submit button
+					submitBtn.disabled = false;
+					submitBtn.textContent = 'Send Message';
+				}
+			});
+		</script>
+	</body>
+</html>
