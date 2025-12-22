@@ -3,7 +3,7 @@ import type { GetStaticPaths, Page } from 'astro';
 import type { CollectionEntry } from 'astro:content';
 import { getCollection } from 'astro:content';
 import BaseHead from '../../components/BaseHead.astro';
-import Breadcrumb from '../../components/Breadcrumb.astro';
+import Navigation from '../../components/Navigation.astro';
 import Footer from '../../components/Footer.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
 import Analytics from '@vercel/analytics/astro'
@@ -27,7 +27,10 @@ const { page } = Astro.props;
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<BaseHead
+			title={`Blog | ${SITE_TITLE}`}
+			description="Thoughts, insights, and stories from Andy McGuinness - covering web development, streaming, music, and creative projects."
+		/>
 		<script is:inline>
 			// Prevent flash of wrong theme
 			(function() {
@@ -40,93 +43,124 @@ const { page } = Astro.props;
 			})();
 		</script>
 	</head>
-	<body class="flex flex-col w-full min-h-screen justify-between bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors">
-		<main class="flex flex-col w-full items-center flex-1 pt-20 px-4">
-			<Breadcrumb currentPath="/blog" />
+	<body class="bg-white dark:bg-black text-black dark:text-white">
+		<Navigation currentPath="/blog" />
 
-			<div class="flex flex-col w-full max-w-4xl bg-[#F8F8F2] dark:bg-[#282A36] rounded-lg shadow-2xl relative overflow-hidden border border-[#E5E5E5] dark:border-[#44475A]">
-				<!-- Terminal title bar -->
-				<div class="w-full bg-[#E5E5E5] dark:bg-[#21222C] h-10 rounded-t-lg flex items-center px-3 relative border-b border-[#D0D0D0] dark:border-[#44475A]">
-					<div class="flex items-center gap-2">
-						<span class="w-3 h-3 bg-red-500 rounded-full"></span>
-						<span class="w-3 h-3 bg-yellow-500 rounded-full"></span>
-						<span class="w-3 h-3 bg-green-500 rounded-full"></span>
-					</div>
-					<span class="absolute left-1/2 transform -translate-x-1/2 text-sm text-[#4D4D4D] dark:text-[#F8F8F2] font-medium">andy@terminal</span>
+		<main class="pt-32 pb-20 px-6 sm:px-8 lg:px-12">
+			<div class="max-w-4xl mx-auto">
+				<!-- Page Header -->
+				<div class="mb-20">
+					<h1 class="text-5xl sm:text-6xl md:text-7xl font-black tracking-tighter mb-6">
+						Blog
+					</h1>
+					<div class="w-24 h-1 bg-[#E8B4B8]"></div>
 				</div>
 
-				<!-- Terminal content -->
-				<div class="p-4 sm:p-6 text-slate-900 dark:text-slate-100 font-mono text-xs sm:text-sm leading-relaxed">
-					<div class="flex flex-col gap-2">
-						<p class="text-sm sm:text-base">
-							<span class="text-[#D97706] dark:text-[#F1FA8C]">$</span> <span class="text-[#BE185D] dark:text-[#FF79C6]">ls</span> <span class="text-[#0369A1] dark:text-[#8BE9FD]">-lt</span> blog/
-							{page.currentPage > 1 && <span class="text-[#4D4D4D] dark:text-[#6272A4]"> --page={page.currentPage}</span>}
-						</p>
-						<p class="text-sm sm:text-base pt-2 pl-4.5">
-							Latest blog posts (sorted by date):
-						</p>
-						<div class="pl-4.5 pt-2 space-y-3">
-							{
-								page.data.map((post) => (
-									<div class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-3">
-										<a
-											href={`/blog/${post.id}/`}
-											class="text-sm sm:text-base font-bold text-[#0369A1] dark:text-[#8BE9FD] hover:text-[#0284C7] dark:hover:text-[#FF79C6] transition-colors"
-										>
-											→ {post.data.title}
-										</a>
-										<span class="text-xs sm:text-sm text-[#4D4D4D] dark:text-[#6272A4]">
-											<FormattedDate date={post.data.pubDate} />
-										</span>
-									</div>
-								))
-							}
-						</div>
+				<!-- Timeline -->
+				<div class="relative">
+					<!-- Timeline line -->
+					<div class="absolute left-0 top-0 bottom-0 w-px bg-gray-200 dark:bg-gray-800"></div>
 
-						<!-- Pagination Controls -->
-						{(page.lastPage > 1) && (
-							<div class="pt-6 border-t border-[#D0D0D0] dark:border-[#44475A] mt-4">
-								<div class="flex items-center justify-between text-sm sm:text-base">
-									<div class="flex items-center gap-2">
-										{page.url.prev ? (
+					<!-- Posts -->
+					<div class="space-y-16">
+						{
+							page.data.map((post, index) => {
+								const postDate = new Date(post.data.pubDate);
+								const formattedYear = postDate.getFullYear();
+								const formattedMonth = postDate.toLocaleDateString('en-US', { month: 'short' });
+								const formattedDay = postDate.getDate();
+
+								return (
+									<article class="relative pl-12 group fade-in" style={`animation-delay: ${index * 0.1}s`}>
+										{/* Timeline marker */}
+										<div class="absolute left-0 top-2 w-3 h-3 bg-[#E8B4B8] rounded-full transform -translate-x-[5px] group-hover:scale-150 transition-transform"></div>
+
+										{/* Date */}
+										<div class="flex items-baseline gap-3 mb-3">
+											<time class="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+												{formattedMonth} {formattedDay}, {formattedYear}
+											</time>
+										</div>
+
+										{/* Post content */}
+										<div>
+											<h2 class="text-3xl sm:text-4xl font-bold mb-4 leading-tight">
+												<a
+													href={`/blog/${post.id}/`}
+													class="hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+												>
+													{post.data.title}
+												</a>
+											</h2>
+
+											{post.data.description && (
+												<p class="text-lg text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+													{post.data.description}
+												</p>
+											)}
+
 											<a
-												href={page.url.prev}
-												class="text-[#0369A1] dark:text-[#8BE9FD] hover:text-[#0284C7] dark:hover:text-[#FF79C6] transition-colors font-medium"
+												href={`/blog/${post.id}/`}
+												class="inline-flex items-center text-base font-medium border-b-2 border-[#E8B4B8] hover:border-[#D4A0A5] transition-colors pb-1"
 											>
-												← Previous
+												Read post
+												<svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+													<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+												</svg>
 											</a>
-										) : (
-											<span class="text-[#9CA3AF] dark:text-[#6272A4]">← Previous</span>
-										)}
-									</div>
+										</div>
+									</article>
+								)
+							})
+						}
+					</div>
+				</div>
 
-									<div class="flex items-center gap-2 text-[#4D4D4D] dark:text-[#6272A4]">
-										<span>Page {page.currentPage} of {page.lastPage}</span>
-									</div>
-
-									<div class="flex items-center gap-2">
-										{page.url.next ? (
-											<a
-												href={page.url.next}
-												class="text-[#0369A1] dark:text-[#8BE9FD] hover:text-[#0284C7] dark:hover:text-[#FF79C6] transition-colors font-medium"
-											>
-												Next →
-											</a>
-										) : (
-											<span class="text-[#9CA3AF] dark:text-[#6272A4]">Next →</span>
-										)}
-									</div>
-								</div>
+				<!-- Pagination -->
+				{(page.lastPage > 1) && (
+					<div class="mt-20 pt-12 border-t border-gray-200 dark:border-gray-800">
+						<div class="flex items-center justify-between">
+							<div>
+								{page.url.prev ? (
+									<a
+										href={page.url.prev}
+										class="inline-flex items-center text-lg font-medium border-b-2 border-[#E8B4B8] hover:border-[#D4A0A5] transition-colors pb-1"
+									>
+										<svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18"></path>
+										</svg>
+										Previous
+									</a>
+								) : (
+									<span class="text-gray-400 dark:text-gray-600">Previous</span>
+								)}
 							</div>
-						)}
 
-						<p class="text-sm sm:text-base pt-4">
-							<span class="text-[#D97706] dark:text-[#F1FA8C] mr-1">$</span> <span class="animate-pulse border-r-2 border-slate-900 dark:border-slate-100 pr-1"></span>
-						</p>
+							<div class="text-sm text-gray-500 dark:text-gray-400">
+								Page {page.currentPage} of {page.lastPage}
+							</div>
+
+							<div>
+								{page.url.next ? (
+									<a
+										href={page.url.next}
+										class="inline-flex items-center text-lg font-medium border-b-2 border-[#E8B4B8] hover:border-[#D4A0A5] transition-colors pb-1"
+									>
+										Next
+										<svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+										</svg>
+									</a>
+								) : (
+									<span class="text-gray-400 dark:text-gray-600">Next</span>
+								)}
+							</div>
+						</div>
 					</div>
-				</div>
+				)}
 			</div>
 		</main>
+
 		<Footer />
 		<Analytics />
 	</body>

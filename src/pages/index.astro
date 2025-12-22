@@ -1,6 +1,5 @@
 ---
 import BaseHead from "../components/BaseHead.astro";
-import Breadcrumb from "../components/Breadcrumb.astro";
 import Footer from "../components/Footer.astro";
 import Analytics from '@vercel/analytics/astro'
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
@@ -23,73 +22,114 @@ import "../styles/global.css";
 			})();
 		</script>
 	</head>
-	<body class="flex flex-col w-full min-h-screen justify-between bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors">
-		<main class="flex flex-col w-full items-center flex-1 pt-20 px-4">
-			<Breadcrumb currentPath="/" />
-
-			<div class="flex flex-col w-full max-w-4xl bg-[#F8F8F2] dark:bg-[#282A36] rounded-lg shadow-2xl relative overflow-hidden border border-[#E5E5E5] dark:border-[#44475A]">
-				<!-- Terminal title bar -->
-				<div class="w-full bg-[#E5E5E5] dark:bg-[#21222C] h-10 rounded-t-lg flex items-center px-3 relative border-b border-[#D0D0D0] dark:border-[#44475A]">
-					<div class="flex items-center gap-2">
-						<span class="w-3 h-3 bg-red-500 rounded-full"></span>
-						<span class="w-3 h-3 bg-yellow-500 rounded-full"></span>
-						<span class="w-3 h-3 bg-green-500 rounded-full"></span>
-					</div>
-					<span class="absolute left-1/2 transform -translate-x-1/2 text-sm text-[#4D4D4D] dark:text-[#F8F8F2] font-medium">andy@terminal</span>
-				</div>
-
-				<!-- Terminal content-->
-				<div class="p-4 sm:p-6 text-slate-900 dark:text-slate-100 font-mono text-xs sm:text-sm leading-relaxed">
-					<div class="flex gap-6">
-						<!-- Terminal content -->
-						<div class="flex-1">
-							<h1 class="text-2xl sm:text-4xl font-bold py-2 sm:py-3">
-								<span class="text-[#D97706] dark:text-[#F1FA8C]">$</span> <span class="text-[#BE185D] dark:text-[#FF79C6]">echo</span> "Hello, world!"
-							</h1>
-							<p class="text-sm sm:text-base pt-2 sm:pt-3">
-								<span class="text-[#D97706] dark:text-[#F1FA8C]">$</span> <span class="text-[#BE185D] dark:text-[#FF79C6]">cat</span> <span class="text-[#15803D] dark:text-[#50FA7B]">about.txt</span>
-							</p>
-							<p class="text-sm sm:text-base pt-2 pl-4.5">
-								I'm Andy McGuinness, a Full Stack Developer currently located in Ohio.
-							</p>
-							<p class="text-sm sm:text-base pl-4.5">
-								I build with <span class="text-[#7C3AED] dark:text-[#BD93F9] font-semibold">Next.js</span>, <span class="text-[#7C3AED] dark:text-[#BD93F9] font-semibold">React</span>, <span class="text-[#7C3AED] dark:text-[#BD93F9] font-semibold">Astro</span>, <span class="text-[#7C3AED] dark:text-[#BD93F9] font-semibold">TailwindCSS</span>, and more for the frontend.
-							</p>
-							<p class="text-sm sm:text-base pl-4.5">
-								Check out my <a href="/about" class="font-bold text-[#0369A1] dark:text-[#8BE9FD] hover:text-[#0284C7] dark:hover:text-[#FF79C6] transition-colors">→ About</a> for more information!
-							</p>
-							<p class="text-sm sm:text-base pt-2 sm:pt-3">
-								<span class="text-[#D97706] dark:text-[#F1FA8C]">$</span> <span class="text-[#BE185D] dark:text-[#FF79C6]">cat</span> <span class="text-[#15803D] dark:text-[#50FA7B]">other_tools.txt</span>
-							</p>
-							<ul class="pt-1 pl-4.5">
-								<li class="text-sm sm:text-base">• Java</li>
-								<li class="text-sm sm:text-base">• Python</li>
-								<li class="text-sm sm:text-base">• Git</li>
-								<li class="text-sm sm:text-base">• Docker</li>
-								<li class="text-sm sm:text-base">• Kubernetes</li>
-								<li class="text-sm sm:text-base">• AWS</li>
-								<li class="text-sm sm:text-base">• GCP</li>
-							</ul>
-							<p class="text-sm sm:text-base pt-2 sm:pt-3">
-								<span class="text-[#D97706] dark:text-[#F1FA8C]">$</span> <span class="text-[#BE185D] dark:text-[#FF79C6]">cat</span> <span class="text-[#15803D] dark:text-[#50FA7B]">twelve_certs.txt</span>
-							</p>
-							<p class="text-sm sm:text-base pt-2 pl-4.5">
-								I'm currently on a quest to get <span class="text-[#7C3AED] dark:text-[#BD93F9] font-semibold">12 certifications in 12 months</span>. You can check out my <a href="/blog" class="font-bold text-[#0369A1] dark:text-[#8BE9FD] hover:text-[#0284C7] dark:hover:text-[#FF79C6] transition-colors">→ Blog</a> for more info!
-							</p>
-							<p class="text-sm sm:text-base pt-2 sm:pt-3">
-								<span class="text-[#D97706] dark:text-[#F1FA8C]">$</span> <span class="text-[#BE185D] dark:text-[#FF79C6]">cat</span> <span class="text-[#15803D] dark:text-[#50FA7B]">thanks.txt</span>
-							</p>
-							<p class="text-sm sm:text-base pt-2 pl-4.5">
-								Thanks for stopping by, and take care!
-							</p>
-							<p class="text-sm sm:text-base pt-2 sm:pt-3">
-								<span class="text-[#D97706] dark:text-[#F1FA8C] mr-1">$</span>{" "}<span class="animate-pulse border-r-2 border-slate-900 dark:border-slate-100 pr-1"></span>
-							</p>
+	<body class="bg-white dark:bg-black text-black dark:text-white">
+		<!-- Hero Section - Minimalist Statement -->
+		<main class="min-h-screen flex flex-col">
+			<!-- Main Hero -->
+			<section class="flex-1 flex items-center justify-center px-6 sm:px-8 lg:px-12">
+				<div class="max-w-6xl w-full">
+					<div class="fade-in">
+						<h1 class="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black leading-none tracking-tighter mb-6 sm:mb-8">
+							Andy<br/>McGuinness
+						</h1>
+						<div class="w-24 h-1 bg-[#E8B4B8] mb-8 sm:mb-12"></div>
+						<p class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light text-gray-600 dark:text-gray-400 max-w-3xl leading-relaxed">
+							Developer, streamer, DJ, musician, barista, and content creator. (Among others.)
+						</p>
+						<div class="mt-12 sm:mt-16 flex flex-wrap gap-6 sm:gap-8">
+							<a
+								href="/about"
+								class="text-lg sm:text-xl font-medium border-b-2 border-[#E8B4B8] hover:border-[#D4A0A5] transition-colors pb-1"
+							>
+								About
+							</a>
+							<a
+								href="/blog"
+								class="text-lg sm:text-xl font-medium border-b-2 border-[#E8B4B8] hover:border-[#D4A0A5] transition-colors pb-1"
+							>
+								Blog
+							</a>
+							<a
+								href="/contact"
+								class="text-lg sm:text-xl font-medium border-b-2 border-[#E8B4B8] hover:border-[#D4A0A5] transition-colors pb-1"
+							>
+								Contact
+							</a>
 						</div>
 					</div>
 				</div>
+			</section>
+
+			<!-- Scroll Indicator -->
+			<div class="pb-12 flex justify-center">
+				<div class="animate-bounce">
+					<svg class="w-6 h-6 text-[#E8B4B8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+					</svg>
+				</div>
 			</div>
 		</main>
+
+		<!-- Featured Section -->
+		<section class="px-6 sm:px-8 lg:px-12 py-20 sm:py-32 bg-gray-50 dark:bg-gray-900">
+			<div class="max-w-6xl mx-auto">
+				<h2 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-12 sm:mb-16 tracking-tight">
+					Featured Projects
+				</h2>
+
+				<!-- Featured Content Grid -->
+				<div class="grid md:grid-cols-2 gap-12 lg:gap-16">
+					<!-- Streaming & Content -->
+					<div class="group">
+						<div class="mb-4">
+							<span class="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Twitch Streaming</span>
+						</div>
+						<h3 class="text-3xl sm:text-4xl font-bold mb-4 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors">
+							CasuallyBrewed
+						</h3>
+						<p class="text-lg text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
+							Streaming cozy video games and creating content on Twitch. Come hang out and chat!
+						</p>
+						<a
+							href="https://twitch.tv/casuallybrewed"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="inline-flex items-center text-lg font-medium border-b-2 border-[#E8B4B8] hover:border-[#D4A0A5] transition-colors pb-1"
+						>
+							Watch on Twitch
+							<svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+							</svg>
+						</a>
+					</div>
+
+					<!-- Freelance Business -->
+					<div class="group">
+						<div class="mb-4">
+							<span class="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Freelance Development</span>
+						</div>
+						<h3 class="text-3xl sm:text-4xl font-bold mb-4 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors">
+							Code by Andy
+						</h3>
+						<p class="text-lg text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
+							Building thoughtful web development projects for values-based small business owners.
+						</p>
+						<a
+							href="https://codebyandy.com"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="inline-flex items-center text-lg font-medium border-b-2 border-[#E8B4B8] hover:border-[#D4A0A5] transition-colors pb-1"
+						>
+							Work together
+							<svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+							</svg>
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
+
 		<Footer />
 		<Analytics />
 	</body>

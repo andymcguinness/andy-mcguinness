@@ -8,18 +8,24 @@ import { SITE_TITLE } from '../consts';
 interface Props {
 	title: string;
 	description: string;
-	image?: ImageMetadata;
+	image?: string;
+	article?: boolean;
+	publishedTime?: string;
+	author?: string;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description } = Astro.props;
+const { title, description, image, article = false, publishedTime, author } = Astro.props;
+
+// Use provided image or fallback to default OG image
+const ogImage = image || new URL('/og-image.png', Astro.site).toString();
 ---
 
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="sitemap" href="/sitemap-index.xml" />
 <link
 	rel="alternate"
@@ -40,15 +46,55 @@ const { title, description } = Astro.props;
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
+<meta name="author" content={author || "Andy McGuinness"} />
+<meta name="robots" content="index, follow" />
+<meta name="googlebot" content="index, follow" />
 
 <!-- Open Graph / Facebook -->
-<meta property="og:type" content="website" />
+<meta property="og:type" content={article ? "article" : "website"} />
 <meta property="og:url" content={Astro.url} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:image:alt" content={title} />
+<meta property="og:site_name" content={SITE_TITLE} />
+<meta property="og:locale" content="en_US" />
+{article && publishedTime && <meta property="article:published_time" content={publishedTime} />}
+{article && author && <meta property="article:author" content={author} />}
 
 <!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content={Astro.url} />
-<meta property="twitter:title" content={title} />
-<meta property="twitter:description" content={description} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={Astro.url} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
+<meta name="twitter:image:alt" content={title} />
+<meta name="twitter:creator" content="@andymcgnnss" />
+<meta name="twitter:site" content="@andymcgnnss" />
+
+<!-- Structured Data (JSON-LD) -->
+<script is:inline type="application/ld+json" set:html={JSON.stringify({
+	"@context": "https://schema.org",
+	"@type": article ? "BlogPosting" : "WebSite",
+	"name": title,
+	"description": description,
+	"url": Astro.url.toString(),
+	"author": {
+		"@type": "Person",
+		"name": author || "Andy McGuinness",
+		"url": "https://andymcguinness.com",
+		"sameAs": [
+			"https://github.com/andymcguinness",
+			"https://linkedin.com/in/mcguinnessandy",
+			"https://instagram.com/andymcgnnss",
+			"https://twitch.tv/casuallybrewed"
+		]
+	},
+	...(article && publishedTime ? { "datePublished": publishedTime } : {}),
+	...(article ? {} : {
+		"publisher": {
+			"@type": "Person",
+			"name": "Andy McGuinness"
+		}
+	})
+})} />

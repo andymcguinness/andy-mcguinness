@@ -2,21 +2,27 @@
 import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
-import Breadcrumb from '../components/Breadcrumb.astro';
+import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Analytics from '@vercel/analytics/astro'
 import '../styles/global.css';
+import { SITE_TITLE } from '../consts';
 
 type Props = CollectionEntry<'blog'>['data'];
 
 const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
-const currentFile = title.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '') + '.txt';
 ---
 
 <html lang="en">
 	<head>
-		<BaseHead title={title} description={description} />
+		<BaseHead
+			title={`${title} | ${SITE_TITLE}`}
+			description={description}
+			article={true}
+			publishedTime={pubDate.toISOString()}
+			author="Andy McGuinness"
+		/>
 		<script is:inline>
 			// Prevent flash of wrong theme
 			(function() {
@@ -30,50 +36,72 @@ const currentFile = title.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|
 		</script>
 	</head>
 
-	<body class="flex flex-col w-full min-h-screen justify-between bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors">
-		<main class="flex flex-col w-full items-center flex-1 pt-16 sm:pt-20 px-4">
-			<Breadcrumb currentPath="/blog/post" currentFile={currentFile} />
+	<body class="bg-white dark:bg-black text-black dark:text-white">
+		<Navigation currentPath="/blog" />
 
-			<article class="flex flex-col w-full max-w-4xl bg-[#F8F8F2] dark:bg-[#282A36] rounded-lg shadow-2xl relative overflow-hidden border border-[#E5E5E5] dark:border-[#44475A] mb-8">
-				<!-- TextEdit title bar -->
-				<div class="w-full bg-[#E5E5E5] dark:bg-[#21222C] h-10 rounded-t-lg flex items-center px-3 relative border-b border-[#D0D0D0] dark:border-[#44475A]">
-					<div class="flex items-center gap-2">
-						<span class="w-3 h-3 bg-red-500 rounded-full"></span>
-						<span class="w-3 h-3 bg-yellow-500 rounded-full"></span>
-						<span class="w-3 h-3 bg-green-500 rounded-full"></span>
-					</div>
-					<span class="absolute left-1/2 transform -translate-x-1/2 text-sm text-[#4D4D4D] dark:text-[#F8F8F2] font-medium">{title.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '')}.txt</span>
-				</div>
-
-				<!-- Text file content -->
-				<div class="p-6 sm:p-8 md:p-12 bg-[#F8F8F2] dark:bg-[#282A36] text-[#4D4D4D] dark:text-[#F8F8F2]">
-					{heroImage && (
-						<div class="mb-8 rounded-lg overflow-hidden border-2 border-[#D0D0D0] dark:border-[#44475A] shadow-lg">
-							<Image width={1020} height={510} src={heroImage} alt="" class="w-full h-auto" />
-						</div>
-					)}
-
+		<main class="pt-32 pb-20">
+			<article class="max-w-3xl mx-auto px-6 sm:px-8">
+				<!-- Post Header -->
+				<header class="mb-16">
 					<div class="mb-6">
-						<div class="text-sm text-[#6D6D6D] dark:text-[#A0A0A0] mb-2">
-							<FormattedDate date={pubDate} />
-							{
-								updatedDate && (
-									<div class="mt-1 italic">
-										Last updated on <FormattedDate date={updatedDate} />
-									</div>
-								)
-							}
-						</div>
-						<h1 class="text-3xl sm:text-4xl font-bold mb-4 text-[#2D2D2D] dark:text-[#F8F8F2]">{title}</h1>
-						<hr class="border-[#D0D0D0] dark:border-[#44475A]" />
+						<a href="/blog" class="inline-flex items-center text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">
+							<svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18"></path>
+							</svg>
+							Back to blog
+						</a>
 					</div>
 
-					<div class="prose-content leading-relaxed">
-						<slot />
+					<time class="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+						<FormattedDate date={pubDate} />
+					</time>
+
+					<h1 class="text-4xl sm:text-5xl md:text-6xl font-black tracking-tighter mt-4 mb-8 leading-tight">
+						{title}
+					</h1>
+
+					<div class="w-24 h-1 bg-[#E8B4B8]"></div>
+
+					{updatedDate && (
+						<p class="mt-6 text-sm text-gray-500 dark:text-gray-400 italic">
+							Last updated: <FormattedDate date={updatedDate} />
+						</p>
+					)}
+				</header>
+
+				<!-- Hero Image -->
+				{heroImage && (
+					<div class="mb-16">
+						<Image
+							width={1200}
+							height={600}
+							src={heroImage}
+							alt={title}
+							class="w-full h-auto"
+						/>
 					</div>
+				)}
+
+				<!-- Post Content -->
+				<div class="prose-content">
+					<slot />
 				</div>
+
+				<!-- Post Footer -->
+				<footer class="mt-20 pt-12 border-t-2 border-gray-200 dark:border-gray-800">
+					<a
+						href="/blog"
+						class="inline-flex items-center text-lg font-medium border-b-2 border-[#E8B4B8] hover:border-[#D4A0A5] transition-colors pb-1"
+					>
+						<svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18"></path>
+						</svg>
+						Back to all posts
+					</a>
+				</footer>
 			</article>
 		</main>
+
 		<Footer />
 		<Analytics />
 	</body>

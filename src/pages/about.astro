@@ -1,6 +1,6 @@
 ---
 import BaseHead from "../components/BaseHead.astro";
-import Breadcrumb from "../components/Breadcrumb.astro";
+import Navigation from "../components/Navigation.astro";
 import Footer from "../components/Footer.astro";
 import Analytics from '@vercel/analytics/astro'
 import "../styles/global.css";
@@ -9,7 +9,7 @@ import "../styles/global.css";
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title="About | Andy McGuinness" description="About Andy McGuinness" />
+		<BaseHead title="About Andy | Andy McGuinness | Multi-Hyphenate Creative Dude" description="Learn more about Andy McGuinness: a developer, streamer, DJ, and creative living in NW Ohio." />
 		<script is:inline>
 			// Prevent flash of wrong theme
 			(function() {
@@ -22,56 +22,96 @@ import "../styles/global.css";
 			})();
 		</script>
 	</head>
-	<body class="flex flex-col w-full min-h-screen justify-between bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors">
-		<main class="flex flex-col w-full items-center flex-1 pt-16 sm:pt-20 px-4">
-			<Breadcrumb currentPath="/about" />
+	<body class="bg-white dark:bg-black text-black dark:text-white">
+		<Navigation currentPath="/about" />
 
-			<div class="flex flex-col w-full max-w-4xl bg-[#F8F8F2] dark:bg-[#282A36] rounded-lg shadow-2xl relative overflow-hidden border border-[#E5E5E5] dark:border-[#44475A]">
-				<!-- TextEdit title bar -->
-				<div class="w-full bg-[#E5E5E5] dark:bg-[#21222C] h-10 rounded-t-lg flex items-center px-3 relative border-b border-[#D0D0D0] dark:border-[#44475A]">
-					<div class="flex items-center gap-2">
-						<span class="w-3 h-3 bg-red-500 rounded-full"></span>
-						<span class="w-3 h-3 bg-yellow-500 rounded-full"></span>
-						<span class="w-3 h-3 bg-green-500 rounded-full"></span>
-					</div>
-					<span class="absolute left-1/2 transform -translate-x-1/2 text-sm text-[#4D4D4D] dark:text-[#F8F8F2] font-medium">about_andy.txt</span>
+		<main class="pt-32 pb-20 px-6 sm:px-8 lg:px-12">
+			<div class="max-w-4xl mx-auto">
+				<!-- Page Header -->
+				<div class="mb-20">
+					<h1 class="text-5xl sm:text-6xl md:text-7xl font-black tracking-tighter mb-6">
+						About
+					</h1>
+					<div class="w-24 h-1 bg-[#E8B4B8] mb-12"></div>
+					<p class="text-2xl sm:text-3xl md:text-4xl font-light text-gray-600 dark:text-gray-400 leading-relaxed max-w-3xl">
+						Multi-hyphenate creative dude living in NW Ohio.
+					</p>
 				</div>
 
-				<!-- Text file content -->
-				<div class="p-6 sm:p-8 md:p-12 bg-[#F8F8F2] dark:bg-[#282A36] text-[#4D4D4D] dark:text-[#F8F8F2] leading-relaxed">
-					<h1 class="text-3xl sm:text-4xl font-bold mb-6 text-[#2D2D2D] dark:text-[#F8F8F2]">About Me</h1>
-
-					<p class="mb-4 text-base sm:text-lg">
-						Hiya! I'm <strong class="font-bold text-[#2D2D2D] dark:text-[#F8F8F2]">Andy</strong>, a developer who's been building things with <span class="font-semibold text-purple-600 dark:text-purple-400">JavaScript</span> since 2014. These days, I run my own company, <a href="https://codebyandy.com/" class="font-bold text-[#0369A1] dark:text-[#8BE9FD] hover:text-[#0284C7] dark:hover:text-[#FF79C6] transition-colors">→ Code by Andy, LLC</a>, where I specialize in web applications (primarily <span class="font-semibold text-purple-600 dark:text-purple-400">Next.js</span>, but I'm also branching into <span class="font-semibold text-purple-600 dark:text-purple-400">Java</span> and <span class="font-semibold text-purple-600 dark:text-purple-400">Python</span>), <span class="font-semibold text-purple-600 dark:text-purple-400">AI integrations</span>, and <span class="font-semibold text-purple-600 dark:text-purple-400">data pipelines</span>. I'm passionate about building cool things with new tech! I'm currently playing around with <span class="font-semibold text-purple-600 dark:text-purple-400">Astro</span>, <span class="font-semibold text-purple-600 dark:text-purple-400">Sanity CMS</span>, and various <span class="font-semibold text-purple-600 dark:text-purple-400">AI tools</span>.
+				<!-- Content -->
+				<div class="space-y-8 text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+					<p>
+						Heya, I'm Andy! I'm always up to a million things at once; while being a barista pays my bills, I'm also a <a href="https://codebyandy.com" target="_blank" rel="noopener noreferrer" class="font-medium text-black dark:text-white border-b-2 border-[#E8B4B8] hover:border-[#D4A0A5] transition-colors">freelance web developer</a>, a <a href="https://www.twitch.tv/casuallybrewed" target="_blank" rel="noopener noreferrer" class="font-medium text-black dark:text-white border-b-2 border-[#E8B4B8] hover:border-[#D4A0A5] transition-colors">Twitch streamer</a>/<a href="https://www.tiktok.com/@casuallybrewed" target="_blank" rel="noopener noreferrer" class="font-medium text-black dark:text-white border-b-2 border-[#E8B4B8] hover:border-[#D4A0A5] transition-colors">content creator</a>, and a <a href="https://zachvibes.com/" target="_blank" rel="noopener noreferrer" class="font-medium text-black dark:text-white border-b-2 border-[#E8B4B8] hover:border-[#D4A0A5] transition-colors">sometimes DJ</a>.
 					</p>
 
-					<p class="mb-4 text-base sm:text-lg">
-						I'm a proud <span class="font-semibold text-[#782F40] dark:text-[#CEB888]">Florida State</span> grad (go Noles!) and am currently pursuing a second degree in <strong class="font-bold">Data Science</strong> at <span class="font-semibold text-[#8C1D40] dark:text-[#FFC627]">Arizona State</span> (forks up!). My first degree was in <strong class="font-bold">IT</strong>, but I fell in love with <strong class="font-bold">data</strong> along the way: cleaning it, massaging it, understanding it, and telling stories with it. There's something deeply satisfying about turning messy data into meaningful insights.
+					<p>
+						I live in NW Ohio with my lovely partner, <a href="https://zachvibes.com/" target="_blank" rel="noopener noreferrer" class="font-medium text-black dark:text-white border-b-2 border-[#E8B4B8] hover:border-[#D4A0A5] transition-colors">Riot</a>, and our 6 (yes, six) cats. My hobbies include everything listed above, in addition to writing, music production, Dungeons & Dragons, and World of Warcraft.
 					</p>
 
-					<p class="mb-4 text-base sm:text-lg">
-						When I'm not coding, you'll find me deep in a <strong class="font-bold text-red-600 dark:text-red-400">Dungeons & Dragons</strong> campaign (I both DM and play; currently running a Warforged Barbarian, though I usually gravitate toward ranged spellcasters), raiding in <strong class="font-bold text-blue-500 dark:text-blue-300">World of Warcraft</strong> (For the Alliance! Though I did main Horde for many years), or watching sports. I also enjoy going to concerts and spending quality time with my partner and our <strong class="font-bold">six cats</strong>, who have a knack for walking across my keyboard during important video calls.
+					<p>
+						I strive to lead an authentic, values-based life; that includes being myself even when it's inconvenient, upholding my values (kindness, integrity, diversity, inclusion, equity, accessibility) in all situations, and pushing myself to be a better, kinder, more thoughtful person every day.
 					</p>
 
-					<p class="mb-4 text-base sm:text-lg">
-						I've lived in <strong class="font-bold">7 states</strong> so far and will probably live in many more! I'm currently based between <span class="font-semibold">Toledo, Ohio</span> and the <span class="font-semibold">San Francisco Bay Area</span>. If you want to chat about a project, swap data stories, or just talk tech (or D&D), feel free to reach out!
+					<p>
+						Very much anti-hustle-culture. Very much into sustainability and longevity.
+					</p>
+				</div>
+
+				<!-- Connect Section -->
+				<div class="mt-20 pt-12 border-t-2 border-gray-200 dark:border-gray-800">
+					<h2 class="text-3xl sm:text-4xl font-bold mb-8 tracking-tight">
+						Say Hello
+					</h2>
+
+					<p class="text-lg text-gray-700 dark:text-gray-300 mb-8 leading-relaxed">
+						Want to work together or just say hi? You can <a href="/contact" class="font-medium text-black dark:text-white border-b-2 border-[#E8B4B8] hover:border-[#D4A0A5] transition-colors">send me a message</a> or find me at:
 					</p>
 
-					<div class="mt-8 pt-6 border-t border-[#D0D0D0] dark:border-[#44475A]">
-						<h2 class="text-xl sm:text-2xl font-bold mb-4 text-[#2D2D2D] dark:text-[#F8F8F2]">Let's Connect</h2>
-						<p class="mb-3 text-base sm:text-lg">
-							Want to work together or just say hi? You can <a href="/contact" class="font-bold text-[#0369A1] dark:text-[#8BE9FD] hover:text-[#0284C7] dark:hover:text-[#FF79C6] transition-colors">→ send me a message</a> or find me at:
-						</p>
-						<ul class="list-disc list-inside space-y-2 text-base sm:text-lg ml-4">
-							<li>GitHub: <a href="https://github.com/andymcguinness" target="_blank" rel="noopener noreferrer" class="font-bold text-[#0369A1] dark:text-[#8BE9FD] hover:text-[#0284C7] dark:hover:text-[#FF79C6] transition-colors">→ @andymcguinness</a></li>
-							<li>LinkedIn: <a href="https://linkedin.com/in/mcguinnessandy" target="_blank" rel="noopener noreferrer" class="font-bold text-[#0369A1] dark:text-[#8BE9FD] hover:text-[#0284C7] dark:hover:text-[#FF79C6] transition-colors">→ @mcguinnessandy</a></li>
-							<li>Instagram (Personal): <a href="https://instagram.com/andymcgnnss" target="_blank" rel="noopener noreferrer" class="font-bold text-[#0369A1] dark:text-[#8BE9FD] hover:text-[#0284C7] dark:hover:text-[#FF79C6] transition-colors">→ @andymcgnnss</a></li>
-							<li>Instagram (Business): <a href="https://instagram.com/codebyandy" target="_blank" rel="noopener noreferrer" class="font-bold text-[#0369A1] dark:text-[#8BE9FD] hover:text-[#0284C7] dark:hover:text-[#FF79C6] transition-colors">→ @codebyandy</a></li>
-						</ul>
+					<div class="grid sm:grid-cols-2 gap-6">
+						<a
+							href="https://github.com/andymcguinness"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="group flex items-center gap-3 p-6 border border-gray-200 dark:border-gray-800 hover:border-[#E8B4B8] dark:hover:border-[#E8B4B8] transition-colors"
+						>
+							<div class="text-lg font-medium">GitHub</div>
+							<div class="ml-auto text-sm text-gray-500 dark:text-gray-400">@andymcguinness</div>
+						</a>
+
+						<a
+							href="https://linkedin.com/in/mcguinnessandy"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="group flex items-center gap-3 p-6 border border-gray-200 dark:border-gray-800 hover:border-[#E8B4B8] dark:hover:border-[#E8B4B8] transition-colors"
+						>
+							<div class="text-lg font-medium">LinkedIn</div>
+							<div class="ml-auto text-sm text-gray-500 dark:text-gray-400">@mcguinnessandy</div>
+						</a>
+
+						<a
+							href="https://instagram.com/andymcgnnss"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="group flex items-center gap-3 p-6 border border-gray-200 dark:border-gray-800 hover:border-[#E8B4B8] dark:hover:border-[#E8B4B8] transition-colors"
+						>
+							<div class="text-lg font-medium">Instagram</div>
+							<div class="ml-auto text-sm text-gray-500 dark:text-gray-400">@andymcgnnss</div>
+						</a>
+
+						<a
+							href="https://instagram.com/codebyandy"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="group flex items-center gap-3 p-6 border border-gray-200 dark:border-gray-800 hover:border-[#E8B4B8] dark:hover:border-[#E8B4B8] transition-colors"
+						>
+							<div class="text-lg font-medium">Code by Andy</div>
+							<div class="ml-auto text-sm text-gray-500 dark:text-gray-400">@codebyandy</div>
+						</a>
 					</div>
 				</div>
 			</div>
 		</main>
+
 		<Footer />
 		<Analytics />
 	</body>

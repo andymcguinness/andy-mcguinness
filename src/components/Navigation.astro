@@ -1,0 +1,49 @@
+---
+interface Props {
+	currentPath?: string;
+}
+
+const { currentPath = "/" } = Astro.props;
+---
+
+<nav class="fixed top-0 left-0 right-0 bg-white/80 dark:bg-black/80 backdrop-blur-sm z-50 border-b border-gray-200 dark:border-gray-800">
+	<div class="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 py-6">
+		<div class="flex items-center justify-between">
+			<a href="/" class="text-xl font-bold hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
+				Andy McGuinness
+			</a>
+			<div class="flex gap-6">
+				<a
+					href="/about"
+					class={`text-sm font-medium border-b-2 pb-1 transition-colors ${
+						currentPath === '/about'
+							? 'border-[#E8B4B8]'
+							: 'border-transparent hover:border-[#E8B4B8]'
+					}`}
+				>
+					About
+				</a>
+				<a
+					href="/blog"
+					class={`text-sm font-medium border-b-2 pb-1 transition-colors ${
+						currentPath === '/blog'
+							? 'border-[#E8B4B8]'
+							: 'border-transparent hover:border-[#E8B4B8]'
+					}`}
+				>
+					Blog
+				</a>
+				<a
+					href="/contact"
+					class={`text-sm font-medium border-b-2 pb-1 transition-colors ${
+						currentPath === '/contact'
+							? 'border-[#E8B4B8]'
+							: 'border-transparent hover:border-[#E8B4B8]'
+					}`}
+				>
+					Contact
+				</a>
+			</div>
+		</div>
+	</div>
+</nav>

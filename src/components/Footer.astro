@@ -3,7 +3,13 @@ import ThemeToggle from './ThemeToggle.astro';
 const today = new Date();
 ---
 
-<footer class="flex flex-row w-full justify-center p-5 items-center">
-	&copy; {today.getFullYear()} Andy McGuinness. All rights reserved.
-	<ThemeToggle />
+<footer class="border-t border-gray-200 dark:border-gray-800">
+	<div class="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 py-12">
+		<div class="flex flex-col sm:flex-row justify-between items-center gap-6">
+			<div class="text-sm text-gray-600 dark:text-gray-400">
+				&copy; {today.getFullYear()} Andy McGuinness. All rights reserved.
+			</div>
+			<ThemeToggle />
+		</div>
+	</div>
 </footer>
