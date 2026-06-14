@@ -1,0 +1,121 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Navigation from "../components/Navigation.astro";
+import Footer from "../components/Footer.astro";
+import Analytics from '@vercel/analytics/astro'
+import "../styles/global.css";
+import { SITE_TITLE } from "../consts";
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title=`Resume | ${SITE_TITLE}` description="Andy McGuinness's professional resume — support engineer and full-stack developer with 10+ years of experience." />
+		<script is:inline>
+			// Prevent flash of wrong theme
+			(function() {
+				const getTheme = () => {
+					const stored = localStorage.getItem('theme');
+					if (stored === 'light' || stored === 'dark') return stored;
+					return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+				};
+				document.documentElement.classList.add(getTheme());
+			})();
+		</script>
+	</head>
+	<body class="bg-white dark:bg-black text-black dark:text-white">
+		<Navigation currentPath="/resume" />
+
+		<main class="pt-32 pb-20 px-6 sm:px-8 lg:px-12">
+			<div class="max-w-4xl mx-auto">
+				<!-- Page Header -->
+				<div class="mb-20">
+					<h1 class="text-5xl sm:text-6xl md:text-7xl font-black tracking-tighter mb-6">
+						Resume
+					</h1>
+					<div class="w-24 h-1 bg-[#E8B4B8] mb-12"></div>
+					<p class="text-2xl sm:text-3xl font-light text-gray-600 dark:text-gray-400 leading-relaxed max-w-3xl">
+						Support Expert with Engineering Experience
+					</p>
+				</div>
+
+				<!-- Skills -->
+				<section class="mb-16">
+					<h2 class="text-3xl sm:text-4xl font-bold mb-8 tracking-tight">Skills</h2>
+					<div class="flex flex-wrap gap-3">
+						{['TypeScript', 'Docker', 'Kubernetes', 'AWS/GCP', 'Customer Support', 'Communication', 'Git', 'CI/CD Tools'].map((skill) => (
+							<span class="px-4 py-2 border border-gray-200 dark:border-gray-800 text-sm font-medium">{skill}</span>
+						))}
+					</div>
+				</section>
+
+				<!-- Education -->
+				<section class="mb-16 pt-12 border-t-2 border-gray-200 dark:border-gray-800">
+					<h2 class="text-3xl sm:text-4xl font-bold mb-8 tracking-tight">Education</h2>
+					<div>
+						<h3 class="text-xl font-bold">Florida State University</h3>
+						<p class="text-gray-600 dark:text-gray-400 mt-1">Bachelor of Science, Information Communication Technology</p>
+					</div>
+				</section>
+
+				<!-- Work Experience -->
+				<section class="pt-12 border-t-2 border-gray-200 dark:border-gray-800">
+					<h2 class="text-3xl sm:text-4xl font-bold mb-12 tracking-tight">Selected -Work Experience</h2>
+
+					<div class="space-y-16">
+						<!-- Freelance -->
+						<div>
+							<div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-2">
+								<h3 class="text-xl font-bold">Freelance</h3>
+								<span class="text-sm text-gray-500 dark:text-gray-400 mt-1 sm:mt-0">2015–Present</span>
+							</div>
+							<p class="text-[#E8B4B8] font-medium mb-4">Full-Stack Developer</p>
+							<p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+								Work as an engineering partner to help startups and small businesses go 0→1. Provide architectural guidance and thought leadership. Create and maintain documentation for new and existing systems. Explain technical concepts to non-technical stakeholders clearly and concisely. Implement CI/CD practices, provide source control guidance, and more.
+							</p>
+						</div>
+
+						<!-- Software Engineer III -->
+						<div>
+							<div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-2">
+								<h3 class="text-xl font-bold">Solera | AutoPoint</h3>
+								<span class="text-sm text-gray-500 dark:text-gray-400 mt-1 sm:mt-0">2023–2025</span>
+							</div>
+							<p class="text-[#E8B4B8] font-medium mb-4">Software Engineer III</p>
+							<p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+								Developed complex software solutions with minimal oversight. Worked as part of a multi-functional, Agile team that spanned clients. Spearheaded resolution of bug-induced incidents. Led code reviews, providing logical and syntactical feedback on others' code. Participated in requirements gathering and retrospectives. Created documentation and demos for diverse audiences, including non-technical members of staff. Deepened subject matter expertise.
+							</p>
+						</div>
+
+						<!-- Lead Technical Operations Engineer -->
+						<div>
+							<div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-2">
+								<h3 class="text-xl font-bold">Solera | AutoPoint</h3>
+								<span class="text-sm text-gray-500 dark:text-gray-400 mt-1 sm:mt-0">2022–2023</span>
+							</div>
+							<p class="text-[#E8B4B8] font-medium mb-4">Lead Technical Operations Engineer</p>
+							<p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+								Led software support and incident resolution for software-introduced bugs. Created comprehensive technical documentation and SOPs. Offered detailed explanations to non-technical stakeholders. Used subject matter expertise to provide relevant feedback and guidance to Account Managers and Executives. Engaged with clients to provide feedback and guidance on technical decisions.
+							</p>
+						</div>
+
+						<!-- Technical Operations Engineer -->
+						<div>
+							<div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-2">
+								<h3 class="text-xl font-bold">Solera | AutoPoint</h3>
+								<span class="text-sm text-gray-500 dark:text-gray-400 mt-1 sm:mt-0">2019–2022</span>
+							</div>
+							<p class="text-[#E8B4B8] font-medium mb-4">Technical Operations Engineer</p>
+							<p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+								Educated clients and internal users on platform usage through documentation, emails, and one-on-one calls. Honed time management skills by juggling multiple tickets for multiple clients, using the Eisenhower Matrix and SLAs to prioritize tasks. Became a subject matter expert in internal software and tooling.
+							</p>
+						</div>
+					</div>
+				</section>
+			</div>
+		</main>
+
+		<Footer />
+		<Analytics />
+	</body>
+</html>

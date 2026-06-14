@@ -24,6 +24,16 @@ const { currentPath = "/" } = Astro.props;
 					About
 				</a>
 				<a
+					href="/resume"
+					class={`text-sm font-medium border-b-2 pb-1 transition-colors ${
+						currentPath === '/resume'
+							? 'border-[#E8B4B8]'
+							: 'border-transparent hover:border-[#E8B4B8]'
+					}`}
+				>
+					Resume
+				</a>
+				<a
 					href="/blog"
 					class={`text-sm font-medium border-b-2 pb-1 transition-colors ${
 						currentPath === '/blog'
