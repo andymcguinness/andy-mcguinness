@@ -10,7 +10,7 @@ import { SITE_TITLE } from "../consts";
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title=`Resume | ${SITE_TITLE}` description="Andy McGuinness's professional resume — support engineer and full-stack developer with 10+ years of experience." />
+		<BaseHead title=`Resume | ${SITE_TITLE}` description="Andy McGuinness's professional resume — data analyst and BI developer with 6+ years of hands-on experience in production SQL Server and PostgreSQL data." />
 		<script is:inline>
 			// Prevent flash of wrong theme
 			(function() {
@@ -33,82 +33,142 @@ import { SITE_TITLE } from "../consts";
 					<h1 class="text-5xl sm:text-6xl md:text-7xl font-black tracking-tighter mb-6">
 						Resume
 					</h1>
-					<div class="w-24 h-1 bg-[#E8B4B8] mb-12"></div>
-					<p class="text-2xl sm:text-3xl font-light text-gray-600 dark:text-gray-400 leading-relaxed max-w-3xl">
-						Support Expert with Engineering Experience
+					<div class="w-24 h-1 bg-[#8FC9E8] mb-12"></div>
+					<p class="text-2xl sm:text-3xl font-light text-gray-600 dark:text-gray-400 leading-relaxed max-w-3xl mb-6">
+						Data Analyst · Business Intelligence
+					</p>
+					<p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed max-w-3xl">
+						Data professional with 6+ years of hands-on experience in production SQL Server and PostgreSQL data, now focused on analytics and business intelligence. Architected a SQL-based marketing engine that increased revenue by 20%, and built the stored procedures, ETL pipelines, and reports behind business dashboards. Experienced in root-cause analysis and in explaining data clearly to non-technical teams. Currently pursuing a B.S. in Data Science at Arizona State University.
 					</p>
 				</div>
 
 				<!-- Skills -->
 				<section class="mb-16">
 					<h2 class="text-3xl sm:text-4xl font-bold mb-8 tracking-tight">Skills</h2>
-					<div class="flex flex-wrap gap-3">
-						{['TypeScript', 'Docker', 'Kubernetes', 'AWS/GCP', 'Customer Support', 'Communication', 'Git', 'CI/CD Tools'].map((skill) => (
-							<span class="px-4 py-2 border border-gray-200 dark:border-gray-800 text-sm font-medium">{skill}</span>
-						))}
-					</div>
-				</section>
-
-				<!-- Education -->
-				<section class="mb-16 pt-12 border-t-2 border-gray-200 dark:border-gray-800">
-					<h2 class="text-3xl sm:text-4xl font-bold mb-8 tracking-tight">Education</h2>
-					<div>
-						<h3 class="text-xl font-bold">Florida State University</h3>
-						<p class="text-gray-600 dark:text-gray-400 mt-1">Bachelor of Science, Information Communication Technology</p>
+					<div class="space-y-6">
+						<div>
+							<h3 class="text-sm font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-3">Data & SQL</h3>
+							<div class="flex flex-wrap gap-3">
+								{['SQL Server (T-SQL)', 'PostgreSQL', 'MySQL', 'Stored Procedures & Query Optimization', 'Data Modeling'].map((skill) => (
+									<span class="px-4 py-2 border border-gray-200 dark:border-gray-800 text-sm font-medium">{skill}</span>
+								))}
+							</div>
+						</div>
+						<div>
+							<h3 class="text-sm font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-3">Analytics & BI</h3>
+							<div class="flex flex-wrap gap-3">
+								{['Power BI', 'Excel', 'Python', 'Data Analysis & Reporting', 'Data Cleansing & Validation'].map((skill) => (
+									<span class="px-4 py-2 border border-gray-200 dark:border-gray-800 text-sm font-medium">{skill}</span>
+								))}
+							</div>
+						</div>
+						<div>
+							<h3 class="text-sm font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-3">Pipelines & Tools</h3>
+							<div class="flex flex-wrap gap-3">
+								{['ETL (SSIS)', 'MongoDB', 'Git & GitHub Actions', 'Database Security & Access Management', 'Agile'].map((skill) => (
+									<span class="px-4 py-2 border border-gray-200 dark:border-gray-800 text-sm font-medium">{skill}</span>
+								))}
+							</div>
+						</div>
 					</div>
 				</section>
 
 				<!-- Work Experience -->
-				<section class="pt-12 border-t-2 border-gray-200 dark:border-gray-800">
-					<h2 class="text-3xl sm:text-4xl font-bold mb-12 tracking-tight">Selected -Work Experience</h2>
+				<section class="mb-16 pt-12 border-t-2 border-gray-200 dark:border-gray-800">
+					<h2 class="text-3xl sm:text-4xl font-bold mb-12 tracking-tight">Professional Experience</h2>
 
 					<div class="space-y-16">
-						<!-- Freelance -->
+						<!-- Freelance Developer -->
 						<div>
 							<div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-2">
-								<h3 class="text-xl font-bold">Freelance</h3>
-								<span class="text-sm text-gray-500 dark:text-gray-400 mt-1 sm:mt-0">2015–Present</span>
+								<h3 class="text-xl font-bold">Code by Andy, LLC · Remote</h3>
+								<span class="text-sm text-gray-500 dark:text-gray-400 mt-1 sm:mt-0">July 2025 – Present</span>
 							</div>
-							<p class="text-[#E8B4B8] font-medium mb-4">Full-Stack Developer</p>
-							<p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-								Work as an engineering partner to help startups and small businesses go 0→1. Provide architectural guidance and thought leadership. Create and maintain documentation for new and existing systems. Explain technical concepts to non-technical stakeholders clearly and concisely. Implement CI/CD practices, provide source control guidance, and more.
-							</p>
+							<p class="text-[#8FC9E8] font-medium mb-4">Freelance Developer</p>
+							<ul class="list-disc list-outside ml-5 space-y-2 text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+								<li>Build MVPs for startup clients and provide architectural guidance, including PostgreSQL, MySQL, and MongoDB database design.</li>
+								<li>Design database schemas, triggers, and functions; manage access controls and CI/CD pipelines in GitHub Actions.</li>
+							</ul>
 						</div>
 
 						<!-- Software Engineer III -->
 						<div>
 							<div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-2">
-								<h3 class="text-xl font-bold">Solera | AutoPoint</h3>
-								<span class="text-sm text-gray-500 dark:text-gray-400 mt-1 sm:mt-0">2023–2025</span>
+								<h3 class="text-xl font-bold">Solera | AutoPoint · Remote</h3>
+								<span class="text-sm text-gray-500 dark:text-gray-400 mt-1 sm:mt-0">September 2023 – July 2025</span>
 							</div>
-							<p class="text-[#E8B4B8] font-medium mb-4">Software Engineer III</p>
-							<p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-								Developed complex software solutions with minimal oversight. Worked as part of a multi-functional, Agile team that spanned clients. Spearheaded resolution of bug-induced incidents. Led code reviews, providing logical and syntactical feedback on others' code. Participated in requirements gathering and retrospectives. Created documentation and demos for diverse audiences, including non-technical members of staff. Deepened subject matter expertise.
-							</p>
+							<p class="text-[#8FC9E8] font-medium mb-4">Software Engineer III</p>
+							<ul class="list-disc list-outside ml-5 space-y-2 text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+								<li>Architected and deployed a SQL-based marketing engine managing hundreds of thousands of customers, increasing revenue by 20%.</li>
+								<li>Managed database-driven reports and dashboards for business reporting; designed and maintained the underlying tables and data relationships.</li>
+								<li>Built ETL pipelines in SSIS to feed downstream reporting and analytics.</li>
+								<li>Developed complex stored procedures and tuned queries and indexes on MSSQL databases with millions of rows.</li>
+							</ul>
 						</div>
 
 						<!-- Lead Technical Operations Engineer -->
 						<div>
 							<div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-2">
-								<h3 class="text-xl font-bold">Solera | AutoPoint</h3>
-								<span class="text-sm text-gray-500 dark:text-gray-400 mt-1 sm:mt-0">2022–2023</span>
+								<h3 class="text-xl font-bold">Solera | AutoPoint · Jacksonville, FL</h3>
+								<span class="text-sm text-gray-500 dark:text-gray-400 mt-1 sm:mt-0">January 2022 – September 2023</span>
 							</div>
-							<p class="text-[#E8B4B8] font-medium mb-4">Lead Technical Operations Engineer</p>
-							<p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-								Led software support and incident resolution for software-introduced bugs. Created comprehensive technical documentation and SOPs. Offered detailed explanations to non-technical stakeholders. Used subject matter expertise to provide relevant feedback and guidance to Account Managers and Executives. Engaged with clients to provide feedback and guidance on technical decisions.
-							</p>
+							<p class="text-[#8FC9E8] font-medium mb-4">Lead Technical Operations Engineer</p>
+							<ul class="list-disc list-outside ml-5 space-y-2 text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+								<li>Analyzed production data with millions of rows to support engineering and business decisions.</li>
+								<li>Served as primary point person for technical incidents affecting data systems, prioritizing triage by team caseload and business urgency and leading resolution.</li>
+								<li>Wrote technical documentation and SOPs that translated complex data issues for non-technical stakeholders.</li>
+							</ul>
 						</div>
 
 						<!-- Technical Operations Engineer -->
 						<div>
 							<div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-2">
-								<h3 class="text-xl font-bold">Solera | AutoPoint</h3>
-								<span class="text-sm text-gray-500 dark:text-gray-400 mt-1 sm:mt-0">2019–2022</span>
+								<h3 class="text-xl font-bold">Solera | AutoPoint · Jacksonville, FL</h3>
+								<span class="text-sm text-gray-500 dark:text-gray-400 mt-1 sm:mt-0">September 2019 – January 2022</span>
 							</div>
-							<p class="text-[#E8B4B8] font-medium mb-4">Technical Operations Engineer</p>
-							<p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-								Educated clients and internal users on platform usage through documentation, emails, and one-on-one calls. Honed time management skills by juggling multiple tickets for multiple clients, using the Eisenhower Matrix and SLAs to prioritize tasks. Became a subject matter expert in internal software and tooling.
-							</p>
+							<p class="text-[#8FC9E8] font-medium mb-4">Technical Operations Engineer</p>
+							<ul class="list-disc list-outside ml-5 space-y-2 text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+								<li>Owned customer-reported data issues from first contact through root-cause analysis to verified resolution.</li>
+								<li>Built reports and cleansed data for downstream processing and analysis.</li>
+								<li>Gathered data and reporting requirements from internal and external stakeholders.</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+
+				<!-- Projects -->
+				<section class="mb-16 pt-12 border-t-2 border-gray-200 dark:border-gray-800">
+					<h2 class="text-3xl sm:text-4xl font-bold mb-8 tracking-tight">Projects</h2>
+					<div>
+						<div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-2">
+							<h3 class="text-xl font-bold">Ohio Electric Grid Analytics Pipeline</h3>
+							<span class="text-sm text-gray-500 dark:text-gray-400 mt-1 sm:mt-0">In progress</span>
+						</div>
+						<p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+							Building an end-to-end pipeline on U.S. EIA hourly grid data for the PJM region: Python ingestion into PostgreSQL, dbt models, statistical analysis of demand-forecast error and carbon intensity by hour, and a Power BI dashboard.
+						</p>
+					</div>
+				</section>
+
+				<!-- Education -->
+				<section class="pt-12 border-t-2 border-gray-200 dark:border-gray-800">
+					<h2 class="text-3xl sm:text-4xl font-bold mb-8 tracking-tight">Education & Certifications</h2>
+					<div class="space-y-6">
+						<div>
+							<h3 class="text-xl font-bold">Arizona State University</h3>
+							<p class="text-gray-600 dark:text-gray-400 mt-1">B.S., Data Science (in progress, expected 2029)</p>
+						</div>
+						<div>
+							<h3 class="text-xl font-bold">Florida State University</h3>
+							<p class="text-gray-600 dark:text-gray-400 mt-1">B.S., Information Communication Technology, 2013</p>
+						</div>
+						<div>
+							<h3 class="text-xl font-bold">Microsoft PL-300: Power BI Data Analyst</h3>
+							<p class="text-gray-600 dark:text-gray-400 mt-1">In progress (target November 2026)</p>
+						</div>
+						<div>
+							<h3 class="text-xl font-bold">CompTIA Data+</h3>
+							<p class="text-gray-600 dark:text-gray-400 mt-1">2023–2026</p>
 						</div>
 					</div>
 				</section>

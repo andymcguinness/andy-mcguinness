@@ -29,7 +29,7 @@ const { page } = Astro.props;
 	<head>
 		<BaseHead
 			title={`Blog | ${SITE_TITLE}`}
-			description="Thoughts, insights, and stories from Andy McGuinness - covering web development, streaming, music, and creative projects."
+			description="Notes from Andy McGuinness on data analytics projects — SQL, Power BI, and what he's learning along the way."
 		/>
 		<script is:inline>
 			// Prevent flash of wrong theme
@@ -53,9 +53,14 @@ const { page } = Astro.props;
 					<h1 class="text-5xl sm:text-6xl md:text-7xl font-black tracking-tighter mb-6">
 						Blog
 					</h1>
-					<div class="w-24 h-1 bg-[#E8B4B8]"></div>
+					<div class="w-24 h-1 bg-[#8FC9E8]"></div>
 				</div>
 
+				{page.data.length === 0 ? (
+					<p class="text-lg text-gray-600 dark:text-gray-400">
+						Nothing posted yet — check back soon for write-ups on data analytics projects.
+					</p>
+				) : (
 				<!-- Timeline -->
 				<div class="relative">
 					<!-- Timeline line -->
@@ -73,7 +78,7 @@ const { page } = Astro.props;
 								return (
 									<article class="relative pl-12 group fade-in" style={`animation-delay: ${index * 0.1}s`}>
 										{/* Timeline marker */}
-										<div class="absolute left-0 top-2 w-3 h-3 bg-[#E8B4B8] rounded-full transform -translate-x-[5px] group-hover:scale-150 transition-transform"></div>
+										<div class="absolute left-0 top-2 w-3 h-3 bg-[#8FC9E8] rounded-full transform -translate-x-[5px] group-hover:scale-150 transition-transform"></div>
 
 										{/* Date */}
 										<div class="flex items-baseline gap-3 mb-3">
@@ -101,7 +106,7 @@ const { page } = Astro.props;
 
 											<a
 												href={`/blog/${post.id}/`}
-												class="inline-flex items-center text-base font-medium border-b-2 border-[#E8B4B8] hover:border-[#D4A0A5] transition-colors pb-1"
+												class="inline-flex items-center text-base font-medium border-b-2 border-[#8FC9E8] hover:border-[#5FA8D3] transition-colors pb-1"
 											>
 												Read post
 												<svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -115,6 +120,7 @@ const { page } = Astro.props;
 						}
 					</div>
 				</div>
+				)}
 
 				<!-- Pagination -->
 				{(page.lastPage > 1) && (
@@ -124,7 +130,7 @@ const { page } = Astro.props;
 								{page.url.prev ? (
 									<a
 										href={page.url.prev}
-										class="inline-flex items-center text-lg font-medium border-b-2 border-[#E8B4B8] hover:border-[#D4A0A5] transition-colors pb-1"
+										class="inline-flex items-center text-lg font-medium border-b-2 border-[#8FC9E8] hover:border-[#5FA8D3] transition-colors pb-1"
 									>
 										<svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18"></path>
@@ -144,7 +150,7 @@ const { page } = Astro.props;
 								{page.url.next ? (
 									<a
 										href={page.url.next}
-										class="inline-flex items-center text-lg font-medium border-b-2 border-[#E8B4B8] hover:border-[#D4A0A5] transition-colors pb-1"
+										class="inline-flex items-center text-lg font-medium border-b-2 border-[#8FC9E8] hover:border-[#5FA8D3] transition-colors pb-1"
 									>
 										Next
 										<svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
