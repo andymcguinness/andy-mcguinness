@@ -10,7 +10,7 @@ import { SITE_TITLE } from "../consts";
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title=`Resume | ${SITE_TITLE}` description="Andy McGuinness's professional resume — data analyst and BI developer with 6+ years of hands-on experience in production SQL Server and PostgreSQL data." />
+		<BaseHead title=`Resume | ${SITE_TITLE}` description="Andy McGuinness's professional resume — IT support specialist with 6+ years of hands-on technical troubleshooting experience, studying for the CompTIA A+." />
 		<script is:inline>
 			// Prevent flash of wrong theme
 			(function() {
@@ -35,10 +35,10 @@ import { SITE_TITLE } from "../consts";
 					</h1>
 					<div class="w-24 h-1 bg-[#8FC9E8] mb-12"></div>
 					<p class="text-2xl sm:text-3xl font-light text-gray-600 dark:text-gray-400 leading-relaxed max-w-3xl mb-6">
-						Data Analyst · Business Intelligence
+						IT Support Specialist
 					</p>
 					<p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed max-w-3xl">
-						Data professional with 6+ years of hands-on experience in production SQL Server and PostgreSQL data, now focused on analytics and business intelligence. Architected a SQL-based marketing engine that increased revenue by 20%, and built the stored procedures, ETL pipelines, and reports behind business dashboards. Experienced in root-cause analysis and in explaining data clearly to non-technical teams. Currently pursuing a B.S. in Data Science at Arizona State University.
+						IT professional with 6+ years of hands-on experience troubleshooting production systems and resolving technical incidents, now pivoting into IT support. Served as the front-line point of contact for technical issues affecting hundreds of thousands of customers, leading root-cause investigations and triaging by business urgency. Experienced in root-cause analysis and in explaining technical issues clearly to non-technical teams. Currently studying for the CompTIA A+ certification.
 					</p>
 				</div>
 
@@ -47,25 +47,33 @@ import { SITE_TITLE } from "../consts";
 					<h2 class="text-3xl sm:text-4xl font-bold mb-8 tracking-tight">Skills</h2>
 					<div class="space-y-6">
 						<div>
-							<h3 class="text-sm font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-3">Data & SQL</h3>
+							<h3 class="text-sm font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-3">Hardware & Devices</h3>
 							<div class="flex flex-wrap gap-3">
-								{['SQL Server (T-SQL)', 'PostgreSQL', 'MySQL', 'Stored Procedures & Query Optimization', 'Data Modeling'].map((skill) => (
+								{['PC Building & Repair', 'Hardware Diagnostics', 'Mobile Devices', 'Printers & Peripherals'].map((skill) => (
 									<span class="px-4 py-2 border border-gray-200 dark:border-gray-800 text-sm font-medium">{skill}</span>
 								))}
 							</div>
 						</div>
 						<div>
-							<h3 class="text-sm font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-3">Analytics & BI</h3>
+							<h3 class="text-sm font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-3">Operating Systems</h3>
 							<div class="flex flex-wrap gap-3">
-								{['Power BI', 'Excel', 'Python', 'Data Analysis & Reporting', 'Data Cleansing & Validation'].map((skill) => (
+								{['Windows 10/11', 'macOS', 'Linux Fundamentals', 'Virtualization'].map((skill) => (
 									<span class="px-4 py-2 border border-gray-200 dark:border-gray-800 text-sm font-medium">{skill}</span>
 								))}
 							</div>
 						</div>
 						<div>
-							<h3 class="text-sm font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-3">Pipelines & Tools</h3>
+							<h3 class="text-sm font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-3">Networking & Security</h3>
 							<div class="flex flex-wrap gap-3">
-								{['ETL (SSIS)', 'MongoDB', 'Git & GitHub Actions', 'Database Security & Access Management', 'Agile'].map((skill) => (
+								{['TCP/IP, DNS & DHCP', 'Wi-Fi & Network Troubleshooting', 'VPN & Remote Access', 'Security Fundamentals'].map((skill) => (
+									<span class="px-4 py-2 border border-gray-200 dark:border-gray-800 text-sm font-medium">{skill}</span>
+								))}
+							</div>
+						</div>
+						<div>
+							<h3 class="text-sm font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-3">Support & Tools</h3>
+							<div class="flex flex-wrap gap-3">
+								{['Active Directory', 'Remote Desktop & Ticketing Tools', 'Technical Documentation & SOPs', 'Customer Service', 'Incident Triage & Root-Cause Analysis'].map((skill) => (
 									<span class="px-4 py-2 border border-gray-200 dark:border-gray-800 text-sm font-medium">{skill}</span>
 								))}
 							</div>
@@ -84,10 +92,10 @@ import { SITE_TITLE } from "../consts";
 								<h3 class="text-xl font-bold">Code by Andy, LLC · Remote</h3>
 								<span class="text-sm text-gray-500 dark:text-gray-400 mt-1 sm:mt-0">July 2025 – Present</span>
 							</div>
-							<p class="text-[#8FC9E8] font-medium mb-4">Freelance Developer</p>
+							<p class="text-[#8FC9E8] font-medium mb-4">Freelance IT Support & Systems Consultant</p>
 							<ul class="list-disc list-outside ml-5 space-y-2 text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-								<li>Build MVPs for startup clients and provide architectural guidance, including PostgreSQL, MySQL, and MongoDB database design.</li>
-								<li>Design database schemas, triggers, and functions; manage access controls and CI/CD pipelines in GitHub Actions.</li>
+								<li>Provide technical support and systems troubleshooting for startup clients, including database configuration.</li>
+								<li>Diagnose and resolve technical incidents, manage user access controls, and maintain documentation for ongoing support engagements.</li>
 							</ul>
 						</div>
 
@@ -99,10 +107,10 @@ import { SITE_TITLE } from "../consts";
 							</div>
 							<p class="text-[#8FC9E8] font-medium mb-4">Software Engineer III</p>
 							<ul class="list-disc list-outside ml-5 space-y-2 text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-								<li>Architected and deployed a SQL-based marketing engine managing hundreds of thousands of customers, increasing revenue by 20%.</li>
-								<li>Managed database-driven reports and dashboards for business reporting; designed and maintained the underlying tables and data relationships.</li>
-								<li>Built ETL pipelines in SSIS to feed downstream reporting and analytics.</li>
-								<li>Developed complex stored procedures and tuned queries and indexes on MSSQL databases with millions of rows.</li>
+								<li>Served as a technical point of contact resolving system incidents affecting dashboards and reporting tools used by internal stakeholders.</li>
+								<li>Diagnosed and resolved production system issues under support SLAs, minimizing downtime for business-critical tools.</li>
+								<li>Documented troubleshooting procedures and provided technical guidance to support and business teams.</li>
+								<li>Maintained and supported the systems and databases underlying customer-facing applications with millions of records.</li>
 							</ul>
 						</div>
 
@@ -114,9 +122,9 @@ import { SITE_TITLE } from "../consts";
 							</div>
 							<p class="text-[#8FC9E8] font-medium mb-4">Lead Technical Operations Engineer</p>
 							<ul class="list-disc list-outside ml-5 space-y-2 text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-								<li>Analyzed production data with millions of rows to support engineering and business decisions.</li>
-								<li>Served as primary point person for technical incidents affecting data systems, prioritizing triage by team caseload and business urgency and leading resolution.</li>
-								<li>Wrote technical documentation and SOPs that translated complex data issues for non-technical stakeholders.</li>
+								<li>Served as primary point person for technical incidents affecting production systems, prioritizing triage by team caseload and business urgency and leading resolution.</li>
+								<li>Led root-cause investigations across production systems, coordinating with engineering and business stakeholders to drive fixes.</li>
+								<li>Wrote technical documentation and SOPs that translated complex technical issues for non-technical stakeholders.</li>
 							</ul>
 						</div>
 
@@ -128,25 +136,11 @@ import { SITE_TITLE } from "../consts";
 							</div>
 							<p class="text-[#8FC9E8] font-medium mb-4">Technical Operations Engineer</p>
 							<ul class="list-disc list-outside ml-5 space-y-2 text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-								<li>Owned customer-reported data issues from first contact through root-cause analysis to verified resolution.</li>
-								<li>Built reports and cleansed data for downstream processing and analysis.</li>
-								<li>Gathered data and reporting requirements from internal and external stakeholders.</li>
+								<li>Owned customer-reported technical issues from first contact through root-cause analysis to verified resolution, serving as a front-line point of contact for end users.</li>
+								<li>Diagnosed and resolved system issues, escalating appropriately to engineering teams.</li>
+								<li>Gathered technical requirements from internal and external stakeholders to inform fixes and improvements.</li>
 							</ul>
 						</div>
-					</div>
-				</section>
-
-				<!-- Projects -->
-				<section class="mb-16 pt-12 border-t-2 border-gray-200 dark:border-gray-800">
-					<h2 class="text-3xl sm:text-4xl font-bold mb-8 tracking-tight">Projects</h2>
-					<div>
-						<div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-2">
-							<h3 class="text-xl font-bold">Ohio Electric Grid Analytics Pipeline</h3>
-							<span class="text-sm text-gray-500 dark:text-gray-400 mt-1 sm:mt-0">In progress</span>
-						</div>
-						<p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-							Building an end-to-end pipeline on U.S. EIA hourly grid data for the PJM region: Python ingestion into PostgreSQL, dbt models, statistical analysis of demand-forecast error and carbon intensity by hour, and a Power BI dashboard.
-						</p>
 					</div>
 				</section>
 
@@ -155,20 +149,16 @@ import { SITE_TITLE } from "../consts";
 					<h2 class="text-3xl sm:text-4xl font-bold mb-8 tracking-tight">Education & Certifications</h2>
 					<div class="space-y-6">
 						<div>
+							<h3 class="text-xl font-bold">CompTIA A+</h3>
+							<p class="text-gray-600 dark:text-gray-400 mt-1">In progress</p>
+						</div>
+						<div>
 							<h3 class="text-xl font-bold">Arizona State University</h3>
 							<p class="text-gray-600 dark:text-gray-400 mt-1">B.S., Data Science (in progress, expected 2029)</p>
 						</div>
 						<div>
 							<h3 class="text-xl font-bold">Florida State University</h3>
 							<p class="text-gray-600 dark:text-gray-400 mt-1">B.S., Information Communication Technology, 2013</p>
-						</div>
-						<div>
-							<h3 class="text-xl font-bold">Microsoft PL-300: Power BI Data Analyst</h3>
-							<p class="text-gray-600 dark:text-gray-400 mt-1">In progress (target November 2026)</p>
-						</div>
-						<div>
-							<h3 class="text-xl font-bold">CompTIA Data+</h3>
-							<p class="text-gray-600 dark:text-gray-400 mt-1">2023–2026</p>
 						</div>
 					</div>
 				</section>

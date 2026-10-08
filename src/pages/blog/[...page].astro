@@ -29,7 +29,7 @@ const { page } = Astro.props;
 	<head>
 		<BaseHead
 			title={`Blog | ${SITE_TITLE}`}
-			description="Notes from Andy McGuinness on data analytics projects — SQL, Power BI, and what he's learning along the way."
+			description="Notes from Andy McGuinness on studying for the CompTIA A+ and the IT support path — what he's learning along the way."
 		/>
 		<script is:inline>
 			// Prevent flash of wrong theme
@@ -58,7 +58,7 @@ const { page } = Astro.props;
 
 				{page.data.length === 0 ? (
 					<p class="text-lg text-gray-600 dark:text-gray-400">
-						Nothing posted yet — check back soon for write-ups on data analytics projects.
+						Nothing posted yet — check back soon for write-ups on the CompTIA A+ and the IT support journey.
 					</p>
 				) : (
 				<!-- Timeline -->
